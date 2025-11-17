@@ -5,11 +5,13 @@ export const App = () => {
   return (
     <div>
       Hello team
-      {/* Example of icons usage */}
+      {/* Example of icons usage with badge */}
       <BookStoreIcon
         iconName={IconName.HeartFilled}
         count={12}
       />
+      {/* Example without badge */}
+      <BookStoreIcon iconName={IconName.Search} />
     </div>
   );
 };
