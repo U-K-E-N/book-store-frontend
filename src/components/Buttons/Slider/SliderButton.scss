@@ -1,0 +1,11 @@
+.slider-button {
+  width: 40px;
+  height: var(--button-height);
+  border-radius: var(--radius-sm);
+  background-color: var(--color-white);
+  border: none;
+
+  &:disabled {
+    color: var(--color-icons);
+  }
+}
