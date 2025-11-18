@@ -1,0 +1,21 @@
+.add-to-cart-button {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  border: none;
+  border-radius: var(--radius-sm);
+  font-size: var(--button-size);
+  font-weight: var(--fw-bold);
+  cursor: pointer;
+  width: 176px;
+  height: var(--button-height);
+  line-height: var(--button-line-height);
+
+  &:hover {
+    box-shadow: 0px 3px 13px 0px #17203166;
+  }
+  &.added {
+    background-color: var(--color-white);
+    color: var(--color-green);
+    border: 1px solid var(--color-elements);
+  }
+}
