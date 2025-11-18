@@ -33,7 +33,7 @@ export const AppRouter = () => (
           element={<Audiobook />}
         />
         <Route
-          path="favorites"
+          path="favourites"
           element={<Favourites />}
         />
         <Route
