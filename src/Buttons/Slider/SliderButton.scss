@@ -1,0 +1,11 @@
+.slider-button {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  background-color: #fff;
+  border: none;
+
+  &:disabled {
+    color: #b4bdc3;
+  }
+}
