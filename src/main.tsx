@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
+import './index.scss';
 import { App } from './App';
 import { LanguageProvider } from './context/LanguageContext';
 
-const Root = () => {
+export const Root = () => {
   return (
     <LanguageProvider>
       <App />
