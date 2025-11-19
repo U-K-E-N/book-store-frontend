@@ -3,7 +3,7 @@ import { AppRouter } from './router/AppRouter';
 export const App = () => {
   return (
     <div>
-      Hello team
+      {/* Hello team */}
       <AppRouter />
     </div>
   );
