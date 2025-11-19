@@ -7,6 +7,15 @@
 .input-container {
   position: relative;
   max-width: 289px;
+
+  @media (min-width: 640px) and (max-width: 1200px) {
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 0.25s ease;
+    &.is-open {
+      transform: scaleY(1);
+    }
+  }
 }
 
 .input-icon {
