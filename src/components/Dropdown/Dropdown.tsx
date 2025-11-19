@@ -1,11 +1,10 @@
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
-import './Dropdown.css';
-import BookStoreIcon from '../../BookStoreIcon/BookStoreIcon';
-import { IconName } from '../../BookStoreIcon/types';
+import './Dropdown.scss';
 import { useState } from 'react';
+import { BookStoreIcon, IconName } from '../BookStoreIcon';
 
 interface DropdownProps {
-  variant?: 'v1' | 'v2' | 'v3';
+  variant: string;
   label?: string;
   options: {
     label: string;
@@ -16,7 +15,7 @@ interface DropdownProps {
 }
 
 export const Dropdown = ({
-  variant = 'v1',
+  variant,
   label,
   options,
   dropdownText,

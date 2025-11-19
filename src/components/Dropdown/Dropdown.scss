@@ -70,62 +70,59 @@
   color: var(--color-primary);
 }
 
-/* V1 — Mobile + Tablet */
-.dropdown--v1 .dropdown__trigger,
-.dropdown--v1 .dropdown__content {
+/* Items on page — Mobile + Tablet */
+.dropdown--number .dropdown__trigger,
+.dropdown--number .dropdown__content {
   min-width: 136px;
 }
 
-/* V1 — Desktop (≥1200px) */
+/* Items on page — Desktop (≥1200px) */
 @media (min-width: 1200px) {
-  .dropdown--v1 .dropdown__trigger,
-  .dropdown--v1 .dropdown__content {
+  .dropdown--number .dropdown__trigger,
+  .dropdown--number .dropdown__content {
     min-width: 128px;
   }
 }
 
-/* V2 — Mobile */
-.dropdown--v2 .dropdown__trigger,
-.dropdown--v2 .dropdown__content {
+/* Sort by — Mobile */
+.dropdown--sort .dropdown__trigger,
+.dropdown--sort .dropdown__content {
   min-width: 136px;
 }
 
-/* V2 — Tablet (640–1199px) */
+/* Sort by — Tablet (640–1199px) */
 @media (min-width: 640px) and (max-width: 1199px) {
-  .dropdown--v2 .dropdown__trigger,
-  .dropdown--v2 .dropdown__content {
+  .dropdown--sort .dropdown__trigger,
+  .dropdown--sort .dropdown__content {
     min-width: 187px;
   }
 }
 
-/* V2 — Desktop (≥1200px) */
+/* Sort by — Desktop (≥1200px) */
 @media (min-width: 1200px) {
-  .dropdown--v2 .dropdown__trigger,
-  .dropdown--v2 .dropdown__content {
+  .dropdown--sort .dropdown__trigger,
+  .dropdown--sort .dropdown__content {
     min-width: 176px;
   }
 }
 
-/* V3 — Mobile */
-.dropdown--v3 .dropdown__trigger,
-.dropdown--v3 .dropdown__content {
-  width: 100%;
-  max-width: 288px;
+/* Category — Mobile */
+.dropdown--category .dropdown__trigger,
+.dropdown--category .dropdown__content {
+  min-width: 288px;
 }
 
-/* V3 — Tablet (640–1199px)*/
+/* Category — Tablet (640–1199px)*/
 @media (min-width: 640px) and (max-width: 1199px) {
-  .dropdown--v3 {
+  .dropdown--category {
     display: none;
   }
 }
 
-/* V3 — Desktop (≥1200px) */
+/* Category — Desktop (≥1200px) */
 @media (min-width: 1200px) {
-  .dropdown--v3 .dropdown__trigger,
-  .dropdown--v3 .dropdown__content {
+  .dropdown--category .dropdown__trigger,
+  .dropdown--category .dropdown__content {
     min-width: 176px;
-    max-width: none;
-    width: auto;
   }
 }

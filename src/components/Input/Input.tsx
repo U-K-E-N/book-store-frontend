@@ -1,10 +1,17 @@
-import './Input.css';
-import BookStoreIcon from '../../BookStoreIcon/BookStoreIcon';
-import { IconName } from '../../BookStoreIcon/types';
+import type { ChangeEvent } from 'react';
+import { BookStoreIcon, IconName } from '../BookStoreIcon';
+import './Input.scss';
 
-export const Input = ({ ...rest }) => {
+type InputProps = {
+  style: string;
+  value: string;
+  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
+  placeholder: string;
+};
+
+export const Input = ({ style, value, onChange, placeholder }: InputProps) => {
   return (
-    <div className="input-container">
+    <div className={`input-container ${style}`}>
       <div className="input-icon">
         <BookStoreIcon iconName={IconName.Search} />
       </div>
@@ -12,8 +19,9 @@ export const Input = ({ ...rest }) => {
         className="input"
         type="text"
         name="text"
-        placeholder="Find a book or author"
-        {...rest}
+        value={value}
+        onChange={onChange}
+        placeholder={placeholder}
       />
     </div>
   );
