@@ -8,7 +8,7 @@ export const BookStoreIcon: React.FC<BookStoreIconsProps> = ({
 }) => {
   return (
     <>
-      <div className="container">
+      <div className="container-icon">
         <i className={iconName}></i>
         {count && <span className="badge">{count}</span>}
       </div>

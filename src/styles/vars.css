@@ -70,4 +70,7 @@
   --mobile: 320px;
   --tablet: 640px;
   --desktop: 1200px;
+
+  /* Animation */
+  --animation: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
