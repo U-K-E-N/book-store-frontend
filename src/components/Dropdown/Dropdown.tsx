@@ -1,8 +1,7 @@
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 import './Dropdown.css';
-import BookStoreIcon from '../../BookStoreIcon/BookStoreIcon';
-import { IconName } from '../../BookStoreIcon/types';
 import { useState } from 'react';
+import { BookStoreIcon, IconName } from '../BookStoreIcon';
 
 interface DropdownProps {
   variant?: 'v1' | 'v2' | 'v3';

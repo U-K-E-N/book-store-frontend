@@ -1,6 +1,5 @@
+import { BookStoreIcon, IconName } from '../BookStoreIcon';
 import './Input.css';
-import BookStoreIcon from '../../BookStoreIcon/BookStoreIcon';
-import { IconName } from '../../BookStoreIcon/types';
 
 export const Input = ({ ...rest }) => {
   return (
