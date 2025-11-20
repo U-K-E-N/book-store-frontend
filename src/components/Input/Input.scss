@@ -12,6 +12,7 @@
     transform: scaleY(0);
     transform-origin: top;
     transition: var(--animation);
+
     &.is-open {
       transform: scaleY(1);
     }

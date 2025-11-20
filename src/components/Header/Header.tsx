@@ -6,17 +6,17 @@ export const Header = () => {
   const [query, setQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('Category');
 
-  const [openInput, setOpenInput] = useState('');
+  const [openInput, setOpenInput] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setQuery(e.target.value);
   };
 
   const handleChangeInputOpen = () => {
-    if (openInput === '') {
-      setOpenInput('is-open');
+    if (openInput === false) {
+      setOpenInput(true);
     } else {
-      setOpenInput('');
+      setOpenInput(false);
     }
   };
 
@@ -29,7 +29,7 @@ export const Header = () => {
         click
       </button>
       <Input
-        style={openInput}
+        isOpen={openInput}
         value={query}
         onChange={handleChange}
         placeholder="Find a book or author"

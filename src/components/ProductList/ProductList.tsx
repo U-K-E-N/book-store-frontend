@@ -8,6 +8,7 @@ import './ProductList.scss';
 
 import { BookStoreIcon, IconName } from '../BookStoreIcon';
 import type { Book } from '../../types/Book';
+import { ProductCard } from '../ProductCard';
 
 type ProductListProps = {
   title: string;
@@ -56,7 +57,7 @@ export const ProductList = ({ title, books }: ProductListProps) => {
                 key={book.id}
                 className="swiper-item"
               >
-                {book.name}
+                <ProductCard book={book} />
               </SwiperSlide>
             ))}
           </Swiper>

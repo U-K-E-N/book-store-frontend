@@ -1,4 +1,4 @@
-import type { AudioBook } from './Audiobook';
+import type { AudioBook } from './AudioBook';
 import type { KindleBook } from './KindleBook';
 import type { PaperBook } from './PaperBook';
 

@@ -1,6 +1,8 @@
 @import '../../styles/vars.css';
 
 .dropdown {
+  position: relative;
+  z-index: 50;
   display: inline-flex;
   flex-direction: column;
   gap: 3px;
@@ -73,28 +75,28 @@
 /* Items on page — Mobile + Tablet */
 .dropdown--number .dropdown__trigger,
 .dropdown--number .dropdown__content {
-  min-width: 136px;
+  width: 136px;
 }
 
 /* Items on page — Desktop (≥1200px) */
 @media (min-width: 1200px) {
   .dropdown--number .dropdown__trigger,
   .dropdown--number .dropdown__content {
-    min-width: 128px;
+    width: 128px;
   }
 }
 
 /* Sort by — Mobile */
 .dropdown--sort .dropdown__trigger,
 .dropdown--sort .dropdown__content {
-  min-width: 136px;
+  width: 136px;
 }
 
 /* Sort by — Tablet (640–1199px) */
 @media (min-width: 640px) and (max-width: 1199px) {
   .dropdown--sort .dropdown__trigger,
   .dropdown--sort .dropdown__content {
-    min-width: 187px;
+    width: 187px;
   }
 }
 
@@ -102,14 +104,14 @@
 @media (min-width: 1200px) {
   .dropdown--sort .dropdown__trigger,
   .dropdown--sort .dropdown__content {
-    min-width: 176px;
+    width: 176px;
   }
 }
 
 /* Category — Mobile */
 .dropdown--category .dropdown__trigger,
 .dropdown--category .dropdown__content {
-  min-width: 288px;
+  width: 288px;
 }
 
 /* Category — Tablet (640–1199px)*/
@@ -123,6 +125,6 @@
 @media (min-width: 1200px) {
   .dropdown--category .dropdown__trigger,
   .dropdown--category .dropdown__content {
-    min-width: 176px;
+    width: 176px;
   }
 }
