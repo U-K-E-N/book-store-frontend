@@ -1,5 +1,5 @@
 import { useState } from 'react';
-// import { Input } from '../Input';
+import { Input } from '../Input';
 import './Header.scss';
 import { NavLink } from 'react-router-dom';
 import { BookStoreIcon, IconName } from '../BookStoreIcon';
@@ -7,23 +7,23 @@ import { Dropdown } from '../Dropdown';
 import { MobileMenu } from './MobileMenu';
 
 export const Header = () => {
-  // const [query, setQuery] = useState('');
+  const [query, setQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('Category');
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  // const [openInput, setOpenInput] = useState('');
+  const [openInput, setOpenInput] = useState('');
 
-  // const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-  //   setQuery(e.target.value);
-  // };
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setQuery(e.target.value);
+  };
 
-  // const handleChangeInputOpen = () => {
-  //   if (openInput === '') {
-  //     setOpenInput('is-open');
-  //   } else {
-  //     setOpenInput('');
-  //   }
-  // };
+  const handleChangeInputOpen = () => {
+    if (openInput === '') {
+      setOpenInput('is-open');
+    } else {
+      setOpenInput('');
+    }
+  };
 
   return (
     <>
@@ -80,18 +80,17 @@ export const Header = () => {
         </div>
         <div className="header__search">
           <div className="header__input">
-            {/* <Input
+            <Input
               style={openInput}
               value={query}
               onChange={handleChange}
               placeholder="Find a book or author"
-            /> */}
+            />
           </div>
           <div className="header__categories">
             <Dropdown
               //sort, number, category
               variant="category"
-              label="Sort by"
               dropdownText={selectedCategory}
               options={[
                 { label: 'Audio', value: 'Audio' },
@@ -105,6 +104,7 @@ export const Header = () => {
             <div
               className="header__icon-wrapper"
               id="search-icon"
+              onClick={handleChangeInputOpen}
             >
               <BookStoreIcon iconName={IconName.Search} />
             </div>

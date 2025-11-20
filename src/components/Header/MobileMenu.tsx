@@ -39,6 +39,7 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ onClose }) => {
             <NavLink
               to="/"
               className="mobile-menu__nav-link"
+              onClick={onClose}
             >
               Home
             </NavLink>
@@ -47,6 +48,7 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ onClose }) => {
             <NavLink
               to="/paper"
               className="mobile-menu__nav-link"
+              onClick={onClose}
             >
               Paper
             </NavLink>
@@ -55,6 +57,7 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ onClose }) => {
             <NavLink
               to="/kindle"
               className="mobile-menu__nav-link"
+              onClick={onClose}
             >
               Kindle
             </NavLink>
@@ -63,6 +66,7 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ onClose }) => {
             <NavLink
               to="/audiobook"
               className="mobile-menu__nav-link"
+              onClick={onClose}
             >
               AudioBook
             </NavLink>
@@ -71,7 +75,12 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ onClose }) => {
       </nav>
 
       <div className="mobile-menu__search">
-        <Input placeholder="Find a book or author" />
+        <Input
+          placeholder="Find a book or author"
+          style={''}
+          value={''}
+          onChange={() => console.log(123)}
+        />
       </div>
 
       <div className="mobile-menu__categories">
@@ -91,6 +100,7 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ onClose }) => {
           to="/favourites"
           className="mobile-menu__icon-wrapper"
           id="favorite-icon"
+          onClick={onClose}
         >
           <BookStoreIcon iconName={IconName.Heart} />
         </NavLink>
@@ -98,6 +108,7 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ onClose }) => {
           to="/cart"
           className="mobile-menu__icon-wrapper"
           id="cart-icon"
+          onClick={onClose}
         >
           <BookStoreIcon
             iconName={IconName.Cart}
