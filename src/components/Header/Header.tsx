@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import { Input } from '../Input';
-import BookStoreIcon from '../../BookStoreIcon/BookStoreIcon';
-import { IconName } from '../../BookStoreIcon/types';
 import './Header.css';
 import { Link } from 'react-router-dom';
+import { BookStoreIcon, IconName } from '../BookStoreIcon';
 
 export const Header = () => {
   const [query, setQuery] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState('Category');
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setQuery(e.target.value);
