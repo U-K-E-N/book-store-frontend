@@ -5,11 +5,15 @@ import './BookStoreIcon.scss';
 export const BookStoreIcon: React.FC<BookStoreIconsProps> = ({
   iconName,
   count,
+  size = 16,
 }) => {
   return (
     <>
-      <div className="container">
-        <i className={iconName}></i>
+      <div className="container-icon">
+        <i
+          style={{ fontSize: size }}
+          className={iconName}
+        ></i>
         {count && <span className="badge">{count}</span>}
       </div>
     </>

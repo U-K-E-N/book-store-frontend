@@ -1,4 +1,4 @@
-@import '../../styles/variables.css';
+@import '../../styles/vars.css';
 
 * {
   box-sizing: border-box;
@@ -6,12 +6,13 @@
 
 .input-container {
   position: relative;
-  max-width: 289px;
+  width: 289px;
 
   @media (min-width: 640px) and (max-width: 1200px) {
     transform: scaleY(0);
     transform-origin: top;
-    transition: transform 0.25s ease;
+    transition: var(--animation);
+
     &.is-open {
       transform: scaleY(1);
     }

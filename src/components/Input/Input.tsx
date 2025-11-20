@@ -1,17 +1,18 @@
 import type { ChangeEvent } from 'react';
 import { BookStoreIcon, IconName } from '../BookStoreIcon';
 import './Input.scss';
+import classNames from 'classnames';
 
 type InputProps = {
-  style: string;
+  isOpen?: boolean;
+  placeholder: string;
   value: string;
   onChange: (e: ChangeEvent<HTMLInputElement>) => void;
-  placeholder: string;
 };
 
-export const Input = ({ style, value, onChange, placeholder }: InputProps) => {
+export const Input = ({ isOpen, placeholder, value, onChange }: InputProps) => {
   return (
-    <div className={`input-container ${style}`}>
+    <div className={classNames('input-container', { 'is-open': isOpen })}>
       <div className="input-icon">
         <BookStoreIcon iconName={IconName.Search} />
       </div>
