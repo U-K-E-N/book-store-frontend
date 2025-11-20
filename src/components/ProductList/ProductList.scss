@@ -1,0 +1,61 @@
+@use '../../styles/utils/mixins' as *;
+
+.product-swiper-wrapper {
+  position: relative;
+}
+
+.product-list__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.custom-buttons {
+  display: flex;
+  gap: 16px;
+}
+
+@media (max-width: 640px) {
+  .custom-buttons {
+    display: none;
+  }
+}
+
+.swiper-button-prev::after,
+.swiper-button-next::after {
+  display: none !important;
+}
+
+@media (max-width: 640px) {
+  .custom-buttons {
+    display: none;
+  }
+}
+
+.custom-prev,
+.custom-next {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.swiper-navigation-icon {
+  display: none;
+}
+
+// ДЛЯ ПРИКЛАДУ, ТРЕБА БУДЕ ВИДАЛИТИ
+.swiper-item {
+  width: 215px;
+  height: 400px;
+  border-radius: 16px;
+  padding: 32px;
+  background-color: #89939a;
+
+  @include on-tablet {
+    width: 272px;
+    height: 506px;
+  }
+}
