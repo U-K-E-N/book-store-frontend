@@ -20,7 +20,6 @@
     justify-content: center;
   }
   &__nav,
-  &__input,
   &__categories {
     display: none;
   }
@@ -65,6 +64,12 @@
     list-style: none;
     margin: 0;
     padding: 0;
+  }
+}
+
+@media (max-width: 640px) {
+  .header__input {
+    display: none;
   }
 }
 
@@ -147,7 +152,6 @@
       }
     }
 
-    &__input,
     &__categories {
       display: none;
     }
@@ -157,7 +161,6 @@
 @include on-desktop {
   .header {
     &__nav,
-    &__input,
     &__categories {
       display: flex;
     }
@@ -200,10 +203,6 @@
     #cart-icon,
     #favorite-icon {
       display: flex;
-    }
-
-    &__input {
-      width: 289px;
     }
 
     &__nav-link {

@@ -77,7 +77,6 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ onClose }) => {
       <div className="mobile-menu__search">
         <Input
           placeholder="Find a book or author"
-          style={''}
           value={''}
           onChange={() => console.log(123)}
         />
@@ -85,7 +84,7 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ onClose }) => {
 
       <div className="mobile-menu__categories">
         <Dropdown
-          variant="v3"
+          variant="category"
           dropdownText="Categories"
           options={[
             { label: 'Fantasy', value: 'fantasy' },

@@ -6,11 +6,13 @@
 
 .input-container {
   position: relative;
+  width: 289px;
 
   @media (min-width: 640px) and (max-width: 1200px) {
     transform: scaleY(0);
     transform-origin: top;
     transition: var(--animation);
+
     &.is-open {
       transform: scaleY(1);
     }

@@ -11,17 +11,17 @@ export const Header = () => {
   const [selectedCategory, setSelectedCategory] = useState('Category');
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  const [openInput, setOpenInput] = useState('');
+  const [openInput, setOpenInput] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setQuery(e.target.value);
   };
 
   const handleChangeInputOpen = () => {
-    if (openInput === '') {
-      setOpenInput('is-open');
+    if (openInput === false) {
+      setOpenInput(true);
     } else {
-      setOpenInput('');
+      setOpenInput(false);
     }
   };
 
@@ -81,7 +81,7 @@ export const Header = () => {
         <div className="header__search">
           <div className="header__input">
             <Input
-              style={openInput}
+              isOpen={openInput}
               value={query}
               onChange={handleChange}
               placeholder="Find a book or author"
