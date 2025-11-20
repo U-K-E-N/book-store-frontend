@@ -1,0 +1,88 @@
+.banner-slider {
+  width: 320px;
+  height: 352px;
+}
+
+.banner-slider__banner {
+  width: 320px;
+  height: 320px;
+  background: linear-gradient(
+    90deg,
+    #4b78bb 73.33%,
+    rgba(75, 120, 187, 0) 100%
+  );
+  background-image: url('/books/img/hero/Banner image mobile.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+.banner-slider__images {
+  display: flex;
+  gap: 9.7px;
+  position: absolute;
+  bottom: 0px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.banner-slider__image {
+  border-radius: 8px;
+  width: 101px;
+  height: 130px;
+}
+
+.banner-slider__title {
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 128%;
+  letter-spacing: -0.01em;
+  text-align: center;
+  color: white;
+}
+
+.banner-slider__discount-container {
+  border-radius: 8px;
+  padding: 8px;
+  width: 73px;
+  height: 47px;
+  background: white;
+  display: flex;
+}
+
+.banner-slider__discount-text {
+  display: flex;
+  align-items: center;
+}
+
+.banner-slider__dots {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin-top: 12px;
+}
+
+/* обычная точка */
+.banner-slider__dots .swiper-pagination-bullet {
+  width: 8px;
+  height: 8px;
+  background: #d9dde1;
+  border-radius: 50%;
+  opacity: 1;
+}
+
+/* активная */
+.banner-slider__dots .swiper-pagination-bullet-active {
+  width: 14px;
+  height: 4px;
+  border-radius: 0px;
+  background: #313237;
+}
+
+.banner-slider__top-image:first-child {
+  margin-left: 0;
+}
+.banner-slider__top-image:last-child {
+  margin-right: 0;
+}
