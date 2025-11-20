@@ -4,7 +4,7 @@ import './Input.scss';
 import classNames from 'classnames';
 
 type InputProps = {
-  isOpen: boolean;
+  isOpen?: boolean;
   placeholder: string;
   value: string;
   onChange: (e: ChangeEvent<HTMLInputElement>) => void;

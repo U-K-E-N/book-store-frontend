@@ -6,7 +6,7 @@
 
 .input-container {
   position: relative;
-  max-width: 289px;
+  width: 289px;
 
   @media (min-width: 640px) and (max-width: 1200px) {
     transform: scaleY(0);
