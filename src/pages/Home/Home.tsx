@@ -1,12 +1,10 @@
-
-
-
-
 import { ProductList } from '../../components/ProductList';
 
 import audioBooks from '../../../public/books/audiobook.json';
 import kindleBooks from '../../../public/books/kindle.json';
 import paperBooks from '../../../public/books/paperback.json';
+import { Carousel } from '../../components/Carousel';
+import { Categories } from '../../components/Categories';
 
 export const Home = () => {
   const filteredAudioBooks = audioBooks
@@ -29,15 +27,16 @@ export const Home = () => {
 
   return (
     <main className="main">
+      <Carousel />
       <ProductList
         title="New books"
         books={books}
       />
+      <Categories />
       <ProductList
         title="You might like"
         books={books}
       />
     </main>
-
   );
 };
