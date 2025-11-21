@@ -3,6 +3,7 @@
 .footer {
   border-top: 1px solid var(--color-elements);
   padding-block: 20px;
+  background-color: var(--color-white);
 
   &__container {
     @include on-tablet {
@@ -13,7 +14,7 @@
   }
 
   &__nav-list {
-    @media (max-width: 640px) {
+    @media (max-width: 639px) {
       margin-bottom: 32px;
     }
     @include on-tablet {
@@ -33,15 +34,15 @@
   }
 
   &__nav-item {
-    font-weight: 700;
+    font-weight: var(--fw-bold);
     font-size: 12px;
 
     line-height: 11px;
     letter-spacing: 0.01em;
     text-transform: uppercase;
-    color: #89939a;
+    color: var(--color-secondary);
 
-    @media (max-width: 640px) {
+    @media (max-width: 639px) {
       &:not(:last-child) {
         margin-bottom: 16px;
       }
@@ -50,7 +51,7 @@
 
   &__logo-link {
     display: inline-block;
-    @media (max-width: 640px) {
+    @media (max-width: 639px) {
       margin-bottom: 32px;
     }
   }
@@ -69,6 +70,6 @@
     align-items: center;
     gap: 16px;
     font-size: 12px;
-    color: #89939a;
+    color: var(--color-secondary);
   }
 }

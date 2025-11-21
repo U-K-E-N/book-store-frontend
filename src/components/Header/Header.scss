@@ -3,6 +3,7 @@
 .header {
   width: 100%;
   border-bottom: 1px solid var(--color-elements);
+  background-color: var(--color-white);
 
   &__container {
     display: flex;
@@ -76,11 +77,11 @@
 }
 
 .header__input {
-  @media (max-width: 640px) {
+  @media (max-width: 639px) {
     display: none;
   }
 
-  @media (min-width: 640px) and (max-width: 1200px) {
+  @media (min-width: 640px) and (max-width: 1199px) {
     position: absolute;
     left: -288px;
   }
@@ -114,7 +115,7 @@
       font-size: 12px;
       position: relative;
       letter-spacing: 0.01em;
-      font-weight: 700;
+      font-weight: var(--fw-bold);
 
       display: inline-block;
 
