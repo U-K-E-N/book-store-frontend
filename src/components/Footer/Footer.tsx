@@ -11,20 +11,18 @@ export const Footer = () => {
   };
 
   return (
-    <>
-      <div className="footer">
-        <div className="footer__logo">
-          <Link
-            to="/"
-            className="footer__logo-link"
-          >
-            <img
-              src="/src/assets/images/logo-footer.svg"
-              alt="Book Store Logo"
-              className="footer__logo-image"
-            />
-          </Link>
-        </div>
+    <footer className="footer">
+      <div className="container footer__container">
+        <Link
+          to="/"
+          className="footer__logo-link"
+        >
+          <img
+            src="/src/assets/logo-header.svg"
+            alt="Book Store Logo"
+            className="footer__logo-image"
+          />
+        </Link>
         <nav className="footer__nav">
           <ul className="footer__nav-list">
             <li className="footer__nav-item">
@@ -54,17 +52,19 @@ export const Footer = () => {
           </ul>
         </nav>
 
-        <button
-          className="footer__back"
-          onClick={scrollToTop}
-        >
-          Back to top
-          <SliderButton
-            disabled={false}
-            iconName={IconName.ArrowUp}
-          />
-        </button>
+        <div className="footer__back-wrapper">
+          <div
+            className="footer__back"
+            onClick={scrollToTop}
+          >
+            Back to top
+            <SliderButton
+              disabled={false}
+              iconName={IconName.ArrowUp}
+            />
+          </div>
+        </div>
       </div>
-    </>
+    </footer>
   );
 };

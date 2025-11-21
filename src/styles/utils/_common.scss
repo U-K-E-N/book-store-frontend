@@ -9,6 +9,10 @@ body {
 
   color: var(--color-primary);
   background-color: var(--color-hover-bg);
+
+  &.no-scroll {
+    overflow: hidden;
+  }
 }
 
 .main {
