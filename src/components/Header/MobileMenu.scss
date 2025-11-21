@@ -82,6 +82,8 @@
     align-items: center;
     height: 64px;
     border-top: 1px solid var(--color-elements);
+    position: fixed;
+    bottom: 0;
   }
 
   &__icon-wrapper {
