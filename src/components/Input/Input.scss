@@ -8,7 +8,7 @@
   position: relative;
   width: 289px;
 
-  @media (min-width: 640px) and (max-width: 1200px) {
+  @media (min-width: 640px) and (max-width: 1199px) {
     transform: scaleY(0);
     transform-origin: top;
     transition: var(--animation);
