@@ -13,7 +13,7 @@
   }
 
   &__nav-list {
-    @media (max-width: 640px) {
+    @media (max-width: 639px) {
       margin-bottom: 32px;
     }
     @include on-tablet {
@@ -41,7 +41,7 @@
     text-transform: uppercase;
     color: #89939a;
 
-    @media (max-width: 640px) {
+    @media (max-width: 639px) {
       &:not(:last-child) {
         margin-bottom: 16px;
       }
@@ -50,7 +50,7 @@
 
   &__logo-link {
     display: inline-block;
-    @media (max-width: 640px) {
+    @media (max-width: 639px) {
       margin-bottom: 32px;
     }
   }

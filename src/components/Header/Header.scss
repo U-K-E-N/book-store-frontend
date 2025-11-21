@@ -76,11 +76,11 @@
 }
 
 .header__input {
-  @media (max-width: 640px) {
+  @media (max-width: 639px) {
     display: none;
   }
 
-  @media (min-width: 640px) and (max-width: 1200px) {
+  @media (min-width: 639px) and (max-width: 1200px) {
     position: absolute;
     left: -288px;
   }
