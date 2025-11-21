@@ -26,7 +26,7 @@ export const Home = () => {
   ];
 
   return (
-    <main className="main">
+    <>
       <Carousel />
       <ProductList
         title="New books"
@@ -37,6 +37,6 @@ export const Home = () => {
         title="You might like"
         books={books}
       />
-    </main>
+    </>
   );
 };

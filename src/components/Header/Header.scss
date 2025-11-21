@@ -1,24 +1,29 @@
 @use '../../styles/utils/mixins' as *;
 
 .header {
-  font-family: var(--font-primary);
   width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   border-bottom: 1px solid var(--color-elements);
+  background-color: var(--color-white);
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 16px;
+
+    @include on-tablet {
+      margin-left: 24px;
+    }
+  }
 
   &__logo-image {
-    width: 40px;
     height: 48px;
-    scale: 2.5;
+
+    @include on-desktop {
+      height: 64px;
+    }
   }
 
-  &__logo {
-    width: 96px;
-    display: flex;
-    justify-content: center;
-  }
   &__nav,
   &__categories {
     display: none;
@@ -37,6 +42,11 @@
     border-right: 1px solid var(--color-elements);
     display: flex;
     justify-content: center;
+
+    &.active {
+      border-bottom: 3px solid var(--color-primary);
+      box-shadow: -1px 0 0 0 var(--color-elements);
+    }
 
     &:first-child {
       border-right: none;
@@ -67,9 +77,18 @@
   }
 }
 
-@media (max-width: 640px) {
-  .header__input {
+.header__search {
+  position: relative;
+}
+
+.header__input {
+  @media (max-width: 639px) {
     display: none;
+  }
+
+  @media (min-width: 640px) and (max-width: 1199px) {
+    position: absolute;
+    left: -288px;
   }
 }
 
@@ -96,9 +115,13 @@
     &__nav-link {
       text-decoration: none;
       color: var(--color-secondary);
+      text-transform: uppercase;
       line-height: 48px;
       font-size: 12px;
       position: relative;
+      letter-spacing: 0.01em;
+      font-weight: var(--fw-bold);
+
       display: inline-block;
 
       &.active::after {
@@ -119,18 +142,18 @@
 
     &__logo {
       padding: 0 16px;
-      width: 96px;
     }
 
-    &__logo-image {
-      scale: 1;
-    }
-
-    &__left,
     &__search {
       display: flex;
       align-items: center;
       gap: var(--space-md);
+    }
+
+    &__left {
+      display: flex;
+      align-items: center;
+      gap: 32px;
     }
 
     #favorite-icon,
@@ -174,16 +197,16 @@
       gap: 64px;
     }
 
-    &__logo {
-      padding: 0 24px;
-      scale: 2.5;
-    }
-
-    &__left,
     &__search {
       display: flex;
       align-items: center;
       gap: var(--space-lg);
+    }
+
+    &__left {
+      display: flex;
+      align-items: center;
+      gap: 48px;
     }
 
     &__icon-wrapper {
@@ -209,7 +232,7 @@
       line-height: 64px;
     }
 
-    &__categoties {
+    &__categories {
       width: 176px;
       text-align: center;
     }

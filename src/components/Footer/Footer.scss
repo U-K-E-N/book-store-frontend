@@ -1,79 +1,75 @@
 @use '../../styles/utils/mixins' as *;
 
 .footer {
-  font-family: var(--font-primary);
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
   border-top: 1px solid var(--color-elements);
-  height: var(--mobile);
-  flex-direction: column;
-  gap: 32px;
-  padding: 32px 16px;
+  padding-block: 20px;
+  background-color: var(--color-white);
+
+  &__container {
+    @include on-tablet {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
 
   &__nav-list {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    text-align: center;
-    align-items: self-start;
+    @media (max-width: 639px) {
+      margin-bottom: 32px;
+    }
+    @include on-tablet {
+      display: flex;
+      gap: 17px;
+    }
+    @include on-desktop {
+      gap: 110px;
+    }
+  }
+
+  &__nav-link {
+    @include on-tablet {
+      line-height: 60px;
+      display: block;
+    }
   }
 
   &__nav-item {
+    font-weight: var(--fw-bold);
     font-size: 12px;
+
+    line-height: 11px;
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    color: var(--color-secondary);
+
+    @media (max-width: 639px) {
+      &:not(:last-child) {
+        margin-bottom: 16px;
+      }
+    }
   }
+
+  &__logo-link {
+    display: inline-block;
+    @media (max-width: 639px) {
+      margin-bottom: 32px;
+    }
+  }
+
   &__logo-image {
-    width: 120px;
+    height: 60px;
+    width: 60px;
+  }
+
+  &__back-wrapper {
+    text-align: center;
   }
 
   &__back {
-    display: flex;
+    display: inline-flex;
     align-items: center;
-    gap: 8px;
-    cursor: pointer;
+    gap: 16px;
+    font-size: 12px;
     color: var(--color-secondary);
-    margin: 0 auto;
-  }
-
-  &__logo {
-    display: flex;
-    justify-content: flex-start;
-    width: 100%;
-  }
-}
-
-@include on-tablet {
-  .footer {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    height: 96px;
-
-    &__nav-list {
-      flex-direction: row;
-      gap: 32px;
-      align-items: center;
-    }
-
-    &__back {
-      flex: 1;
-      display: flex;
-      justify-content: flex-end;
-    }
-
-    &__nav {
-      flex: 1;
-      display: flex;
-      justify-content: center;
-    }
-    &__logo {
-      flex: 1;
-      justify-content: flex-start;
-      // margin-left: 32px;
-    }
   }
 }

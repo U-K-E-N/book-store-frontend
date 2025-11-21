@@ -19,7 +19,7 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ onClose }) => {
             className="mobile-menu__logo-link"
           >
             <img
-              src="/src/assets/images/logo-header.svg"
+              src="/src/assets/logo-header.svg"
               alt="Book Store Logo"
               className="mobile-menu__logo-image"
             />
