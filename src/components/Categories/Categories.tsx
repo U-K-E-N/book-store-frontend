@@ -1,19 +1,21 @@
+import './Categories.scss';
+
 export const Categories = () => {
   const items = [
     {
       title: 'Paper books',
       text: '10,305 items',
-      video: '/books/img/categories/paper.mp4',
+      img: '/books/img/gif/paper.gif',
     },
     {
       title: 'Audiobooks',
       text: '10,305 items',
-      video: '/books/img/categories/audio.mp4',
+      img: '/books/img/gif/audio.gif',
     },
     {
       title: 'Kindle books',
       text: '10,305 items',
-      video: '/books/img/categories/kindlebook.mp4',
+      img: '/books/img/gif/kindlebook.gif',
     },
   ];
 
@@ -28,12 +30,10 @@ export const Categories = () => {
             key={item.title}
           >
             <div className="category__media">
-              <video
-                src={item.video}
-                autoPlay
-                loop
-                muted
-                playsInline
+              <img
+                className="category__media-img"
+                src={item.img}
+                alt={item.title}
               />
             </div>
 
