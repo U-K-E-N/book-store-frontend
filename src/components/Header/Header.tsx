@@ -27,7 +27,7 @@ export const Header = () => {
 
   return (
     <>
-      <div className="header">
+      <header className="header">
         <div className="header__left">
           <div className="header__logo">
             <NavLink
@@ -132,7 +132,7 @@ export const Header = () => {
             </div>
           </div>
         </div>
-      </div>
+      </header>
 
       {isMobileMenuOpen && (
         <MobileMenu onClose={() => setIsMobileMenuOpen(false)} />
