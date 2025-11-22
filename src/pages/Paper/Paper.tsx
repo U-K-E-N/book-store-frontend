@@ -1,3 +1,11 @@
+import paperBooks from '../../../public/books/paperback.json';
+import { Catalog } from '../../components/Catalog/Catalog';
+
 export const Paper = () => {
-  return <div>Paper</div>;
+  return (
+    <Catalog
+      catalogBooks={paperBooks}
+      title="Paper books"
+    />
+  );
 };

@@ -10,7 +10,8 @@
     border: 1px solid var(--color-primary);
   }
 
-  &:active {
+  &:active,
+  .is-active {
     background-color: var(--color-primary);
     border: 1px solid var(--color-primary);
     color: var(--color-white);
