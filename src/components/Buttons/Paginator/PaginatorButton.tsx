@@ -1,21 +1,26 @@
 import './PaginatorButton.scss';
+import classNames from 'classnames';
 
 import React from 'react';
 
 export type PaginatorButtonProps = {
   label: string;
-  onPageChange?: (page: number) => void;
+  onPageChange: () => void;
+  isActive?: boolean;
 };
 
 export const PaginatorButton: React.FC<PaginatorButtonProps> = ({
   label,
   onPageChange,
+  isActive,
 }) => {
   return (
     <>
       <button
-        className="paginator-button"
-        onClick={() => onPageChange}
+        className={classNames('paginator-button', { 'is-active': isActive })}
+        onClick={() => {
+          onPageChange();
+        }}
       >
         {label}
       </button>

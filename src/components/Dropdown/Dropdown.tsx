@@ -8,10 +8,10 @@ interface DropdownProps {
   label?: string;
   options: {
     label: string;
-    value: string;
+    value: string | number;
   }[];
   dropdownText: string;
-  onSelect: (value: string) => void;
+  onSelect: (value: string | number) => void;
 }
 
 export const Dropdown = ({

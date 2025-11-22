@@ -29,10 +29,10 @@ export const ProductCard = ({ book }: ProductCardProps) => {
         <p className="productCard__author">{book.author}</p>
 
         <div className="productCard__prices">
-          <span className="productCard__price">&#36;{book.priceDiscount}</span>
+          <span className="productCard__price">&#36;{book.priceRegular}</span>
           {book.priceDiscount && (
             <span className="productCard__oldPrice">
-              &#36;{book.priceRegular}
+              &#36;{book.priceDiscount}
             </span>
           )}
         </div>
