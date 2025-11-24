@@ -9,6 +9,11 @@
   background: var(--color-white);
   width: 214px;
 
+  &:hover {
+    box-shadow: 0 2px 16px 0 rgba(0, 0, 0, 0.1);
+    background: var(--color-white);
+  }
+
   @include on-tablet {
     width: 272px;
     padding: 31px;
@@ -75,7 +80,6 @@
   font-size: 14px;
 
   line-height: 21px;
-  margin-bottom: 8px;
 }
 
 .productCard__prices {
@@ -134,4 +138,9 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.productCard__content-wrapper {
+  display: block;
+  margin-bottom: 8px;
 }
