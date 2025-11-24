@@ -27,7 +27,6 @@ export const Home = () => {
 
   return (
     <>
-      <a href="../ItemCard">Link</a>
       <Carousel />
       <ProductList
         title="New books"
