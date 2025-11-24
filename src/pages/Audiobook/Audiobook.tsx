@@ -1,10 +1,14 @@
-import audioBooks from '../../../public/books/audiobook.json';
 import { Catalog } from '../../components/Catalog/Catalog';
+import { useFetchBooks } from '../../hooks/useFetchBooks';
 
 export const Audiobook = () => {
+  const { data, loading, error } = useFetchBooks('audiobook');
+
   return (
     <Catalog
-      catalogBooks={audioBooks}
+      error={error}
+      isLoading={loading}
+      catalogBooks={data}
       title="Audiobooks"
     />
   );
