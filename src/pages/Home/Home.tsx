@@ -32,8 +32,6 @@ export const Home = () => {
     return <ErrorMessage />;
   }
 
-  console.log(newBooks);
-
   return (
     <>
       <Carousel />
