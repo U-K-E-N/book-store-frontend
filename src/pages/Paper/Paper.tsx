@@ -1,10 +1,14 @@
-import paperBooks from '../../../public/books/paperback.json';
 import { Catalog } from '../../components/Catalog/Catalog';
+import { useFetchBooks } from '../../hooks/useFetchBooks';
 
 export const Paper = () => {
+  const { data, loading, error } = useFetchBooks('paperback');
+
   return (
     <Catalog
-      catalogBooks={paperBooks}
+      error={error}
+      isLoading={loading}
+      catalogBooks={data}
       title="Paper books"
     />
   );

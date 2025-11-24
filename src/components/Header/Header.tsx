@@ -1,13 +1,21 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { Input } from '../Input';
 import './Header.scss';
 import { NavLink } from 'react-router-dom';
 import { BookStoreIcon, IconName } from '../BookStoreIcon';
 import { Dropdown } from '../Dropdown';
 import { MobileMenu } from './MobileMenu';
+
+import type { BookBase } from '../../types/BookBase';
+import { SearchDropdown } from '../SearchDropdown';
+
 import { useStore } from '../../hooks/useStore';
 
-export const Header = () => {
+interface HeaderProps {
+  allBooks: BookBase[];
+}
+
+export const Header: React.FC<HeaderProps> = ({ allBooks }) => {
   const [query, setQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<string | number>(
     'Category',
@@ -15,6 +23,12 @@ export const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const [openInput, setOpenInput] = useState(false);
+
+  const filteredBooks = allBooks.filter(
+    (book) =>
+      book.name.toLowerCase().includes(query.toLowerCase()) ||
+      book.author?.toLowerCase().includes(query.toLowerCase()),
+  );
 
   const { cart, favourites } = useStore();
   const totalItemsCart = cart.reduce((sum, item) => sum + item.quantity, 0);
@@ -102,7 +116,22 @@ export const Header = () => {
                 onChange={handleChange}
                 placeholder="Find a book or author"
               />
+
+              {query.length > 0 && (
+                <button
+                  className="header__input-clear"
+                  onClick={() => setQuery('')}
+                  aria-label="Clear input"
+                >
+                  ×
+                </button>
+              )}
+
+              {query.length > 2 && filteredBooks.length > 0 && (
+                <SearchDropdown books={filteredBooks} />
+              )}
             </div>
+
             <div className="header__categories">
               <Dropdown
                 //sort, number, category
@@ -113,7 +142,7 @@ export const Header = () => {
                   { label: 'Kindle', value: 'Kindle' },
                   { label: 'Paper', value: 'Paper' },
                 ]}
-                onSelect={(val) => setSelectedCategory(val)}
+                onSelect={(val) => setSelectedCategory(val.toString())}
               />
             </div>
             <div className="header__icons">
@@ -157,7 +186,13 @@ export const Header = () => {
         </div>
       </header>
 
-      {isMobileMenuOpen && <MobileMenu onClose={toggleMobileMenu} />}
+      {isMobileMenuOpen && (
+        <MobileMenu
+          onClose={toggleMobileMenu}
+          value={query}
+          onChange={handleChange}
+        />
+      )}
     </>
   );
 };
