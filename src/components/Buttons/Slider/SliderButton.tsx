@@ -6,7 +6,7 @@ import React from 'react';
 export type SliderButtonProps = {
   iconName: IconName;
   disabled: boolean;
-  onClick: () => void;
+  onClick?: () => void;
 };
 
 export const SliderButton: React.FC<SliderButtonProps> = ({
