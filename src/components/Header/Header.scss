@@ -81,6 +81,8 @@
 }
 
 .header__input {
+  position: relative;
+
   @media (max-width: 639px) {
     display: none;
   }
@@ -88,6 +90,22 @@
   @media (min-width: 640px) and (max-width: 1199px) {
     position: absolute;
     left: -288px;
+  }
+}
+
+.header__input-clear {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  border: none;
+  background: transparent;
+  font-size: 18px;
+  cursor: pointer;
+  color: var(--color-secondary);
+
+  &:hover {
+    color: var(--color-primary);
   }
 }
 

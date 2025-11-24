@@ -1,12 +1,25 @@
 import { Link } from 'react-router-dom';
 import { BookStoreIcon, IconName } from '../BookStoreIcon';
 import './Footer.scss';
+import classNames from 'classnames';
+import { useState } from 'react';
 
 export const Footer = () => {
   const scrollToTop = () => {
     if (window.scrollTo) {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
+  };
+
+  const [isContactsOpen, setIsContactsOpen] = useState(false);
+  const [isRightsOpen, setIsRightsOpen] = useState(false);
+
+  const handleContacts = () => {
+    setIsContactsOpen((prev) => !prev);
+  };
+
+  const handleRights = () => {
+    setIsRightsOpen((prev) => !prev);
   };
 
   return (
@@ -25,27 +38,59 @@ export const Footer = () => {
         <nav className="footer__nav">
           <ul className="footer__nav-list">
             <li className="footer__nav-item">
-              <Link
-                to="/"
+              <a
+                href="https://github.com/U-K-E-N/book-store-frontend"
+                target="blank"
                 className="footer__nav-link"
               >
                 GITHUB
-              </Link>
+              </a>
             </li>
-            <li className="footer__nav-item">
+            <li
+              className={classNames('footer__nav-item', {
+                'is-open': isContactsOpen,
+              })}
+              onClick={handleContacts}
+            >
               <Link
                 to="/"
                 className="footer__nav-link"
               >
                 CONTACTS
               </Link>
+
+              <span className="footer__nav-link-info">
+                <a
+                  href="tel:+380999999999"
+                  target="blank"
+                >
+                  +38(099)-999-99-99
+                </a>
+                <a
+                  href="mailto:uken@gmail.com"
+                  target="blank"
+                >
+                  uken@gmail.com
+                </a>
+                <a
+                  href="https://maps.app.goo.gl/qFNczgA56jkCP8L68"
+                  target="blank"
+                >
+                  Ми тут
+                </a>
+              </span>
             </li>
-            <li className="footer__nav-item">
+            <li
+              className={classNames('footer__nav-item', {
+                'is-open': isRightsOpen,
+              })}
+              onClick={handleRights}
+            >
               <Link
-                to="/"
+                to="/about"
                 className="footer__nav-link"
               >
-                RIGHTS
+                About us
               </Link>
             </li>
           </ul>
