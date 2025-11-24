@@ -40,16 +40,15 @@ export const AppRouter = () => (
           path="cart"
           element={<Cart />}
         />
+        <Route
+          path="*"
+          element={<NotFoundPage />}
+        />
       </Route>
 
       <Route
         path="/auth"
         element={<AuthPage />}
-      />
-
-      <Route
-        path="*"
-        element={<NotFoundPage />}
       />
     </Routes>
   </BrowserRouter>
