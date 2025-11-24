@@ -8,7 +8,6 @@ import { Favourites } from '../pages/Favourites';
 import { Cart } from '../pages/Cart';
 import { NotFoundPage } from '../pages/NotFoundPage';
 import { AuthPage } from '../pages/AuthPage';
-import { ItemCard } from '../pages/ItemCard';
 
 export const AppRouter = () => (
   <BrowserRouter>
@@ -24,10 +23,6 @@ export const AppRouter = () => (
         <Route
           path="paper"
           element={<Paper />}
-        />
-        <Route
-          path="ItemCard"
-          element={<ItemCard />}
         />
         <Route
           path="kindle"

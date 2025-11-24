@@ -6,18 +6,33 @@
   &__title {
     color: var(--color-primary);
     font-size: var(--h3-size);
-    font-weight: 700;
+    font-weight: var(--fw-bold);
     line-height: var(--h3-line-height);
+
+    @include on-tablet {
+      font-size: var(--h2-size);
+      line-height: var(--h2-line-height);
+      letter-spacing: -1%;
+    }
+
+    @include on-desktop {
+    }
   }
 
   &__author {
     font-size: var(--body1-size);
     line-height: var(--body1-line-height);
-    color: var(--color-primary);
+    color: var(--color-secondary);
+
+    @include on-tablet {
+      padding-bottom: var(--space-xl);
+    }
   }
 
   &__card {
-    @include page-grid {
+    @include on-tablet {
+      @include page-grid;
+      position: relative;
     }
   }
 
@@ -27,15 +42,32 @@
     margin-bottom: 40px;
     border-radius: var(--radius-sm);
     border: 1px solid var(--color-elements);
+
+    @include on-tablet {
+      grid-column: 4 / 6;
+      width: 205px;
+      height: 315px;
+    }
+
+    @include on-desktop {
+      grid-column: 3 / 10;
+      width: 337px;
+      height: 520px;
+    }
   }
 
   &__img-thumb {
     display: flex;
     gap: var(--space-xs);
     margin-bottom: var(--space-xl);
+    overflow: scroll;
 
     @include on-tablet {
+      position: absolute;
+      top: 0;
       flex-direction: column;
+      grid-column: 1 / 2;
+      overflow: visible;
     }
   }
 
@@ -45,10 +77,24 @@
 
     border-radius: var(--radius-sm);
     border: 1px solid var(--color-elements);
+
+    @include on-desktop {
+      width: 80px;
+      height: 80px;
+    }
   }
 
   &__price-block {
     margin-bottom: var(--space-xl);
+
+    @include on-tablet {
+      grid-column: 6 / -1;
+      margin-bottom: 40px;
+    }
+
+    @include on-desktop {
+      grid-column: 14 / 20;
+    }
   }
 
   &__category {
@@ -66,6 +112,7 @@
   }
 
   &__category-value {
+    width: min-content;
     display: inline-block;
     margin-bottom: var(--space-md);
     padding: 8px 14px;
@@ -108,6 +155,11 @@
     font-size: var(--h3-size);
     line-height: var(--h3-line-height);
     font-weight: bold;
+
+    @include on-desktop {
+      font-size: var(--h2-size);
+      line-height: var(--h2-line-height);
+    }
   }
 
   &__old-price {
@@ -116,7 +168,13 @@
     font-size: var(--h4-size);
     font-weight: bold;
     text-decoration: line-through;
+    text-align: center;
     color: var(--color-secondary);
+
+    @include on-desktop {
+      font-size: var(--h3-size);
+      line-height: var(--h3-line-height);
+    }
   }
 
   &__cart-buttons {
@@ -133,6 +191,15 @@
       display: flex;
       justify-content: space-between;
       padding: 6px 0;
+      color: var(--color-secondary);
+      font-family: Manrope;
+      font-weight: 500;
+      font-size: var(--button-size);
+      line-height: var(--button-line-height);
+
+      strong {
+        color: var(--color-primary);
+      }
 
       &:not(:last-child) {
         border-bottom: 1px solid var(--color-elements);
@@ -140,16 +207,52 @@
     }
   }
 
+  &__description {
+    @include on-desktop {
+      @include page-grid;
+    }
+  }
+
   &__about {
     margin-bottom: var(--space-xl);
+    font-family: Manrope;
+    font-weight: 500;
+    font-size: var(--button-size);
+    line-height: var(--button-line-height);
+
+    @include on-tablet {
+      margin-bottom: 40px;
+      font-size: var(--body1-size);
+      line-height: var(--body1-line-height);
+    }
+
+    @include on-desktop {
+      grid-column: 1 / 12;
+    }
 
     &-title {
       margin-bottom: var(--space-lg);
+      font-weight: var(fw-semibold);
+      font-size: var(--h4-size);
+      line-height: var(--h4-line-heigh);
+
+      @include on-tablet {
+        font-size: var(--h3-size);
+        line-height: var(--h3-line-heigh);
+      }
     }
   }
 
   &__characteristics {
     margin-bottom: 56px;
+
+    @include on-tablet {
+      margin-bottom: 80px;
+    }
+
+    @include on-desktop {
+      grid-column: 14 / -1;
+    }
 
     &-title {
       margin-bottom: var(--space-lg);

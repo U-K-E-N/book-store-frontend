@@ -21,6 +21,11 @@ export const ItemCard = () => {
           />
           <div className="book__img-thumb">
             <img
+              src="../../../public/books/img/paperback/harry-potter-1/uk/00.webp"
+              alt="book Preview"
+              className="book__secondary-img"
+            />
+            <img
               src="../../../public/books/img/paperback/harry-potter-1/uk/01.webp"
               alt="book Preview"
               className="book__secondary-img"
@@ -45,9 +50,7 @@ export const ItemCard = () => {
           <div className="book__price-block">
             <div className="book__category">
               <label className="book__label">Category</label>
-              <span className="book__category-value">
-                Fantasy/Children&apos;s literature
-              </span>
+              <span className="book__category-value">book.category</span>
             </div>
 
             <div className="book__language">
@@ -57,8 +60,8 @@ export const ItemCard = () => {
                 <button className="book__lang-btn active">ENG</button>
               </div>
             </div>
-            <span className="book__price">10$</span>
-            <span className="book__old-price">13$</span>
+            <span className="book__price">book.priceDiscount</span>
+            <span className="book__old-price">book.priceRegular</span>
             <div className="book__cart-buttons">
               <AddToCartButton
                 selected={false}
@@ -71,56 +74,52 @@ export const ItemCard = () => {
             </div>
             <ul className="book__description-list">
               <li>
-                Autor: <strong>author</strong>
+                Autor: <strong>book.author</strong>
               </li>
               <li>
                 Cover type: <strong>Hardcover</strong>
               </li>
               <li>
-                Number of pages: <strong>numberOfPages</strong>
+                Number of pages: <strong>book.numberOfPages</strong>
               </li>
               <li>
-                Year of publication: <strong>publicationYear</strong>
+                Year of publication: <strong>book.publicationYear</strong>
               </li>
             </ul>
           </div>
         </div>
 
-        <div className="book__about">
-          <h2 className="book__about-title">About</h2>
-          <p>
-            Гаррі Поттер — сирота й живе із Дурслями... Новий друг передає
-            Поттеру листа-запрошення до школи магії Гоґвортс. Проте скоро Гаррі
-            розкриває страшну правду про смерть своїх батьків і загрозу, що
-            нависла над чарівним світом. Разом із друзями він рішуче бореться зі
-            злом.
-          </p>
-        </div>
-        <div className="book__characteristics">
-          <h2 className="book__characteristics-title">Characteristics</h2>
-          <ul className="book__description-list">
-            <li>
-              Author:<strong>autor</strong>
-            </li>
-            <li>
-              Cover type:<strong>Hardcover</strong>
-            </li>
-            <li>
-              Number of pages:<strong>numberOfPages</strong>
-            </li>
-            <li>
-              Year of publication:<strong>publicationYear</strong>
-            </li>
-            <li>
-              Format: <strong>format</strong>
-            </li>
-            <li>
-              Language: <strong>lang</strong>
-            </li>
-            <li>
-              Illustrations: <strong>illustrations</strong>
-            </li>
-          </ul>
+        <div className="book__description">
+          <div className="book__about">
+            <h2 className="book__about-title">About</h2>
+            <p>book.description</p>
+          </div>
+          <div className="book__characteristics">
+            <h2 className="book__characteristics-title">Characteristics</h2>
+            <ul className="book__description-list">
+              <li>
+                Author:<strong>book.autor</strong>
+              </li>
+              <li>
+                Cover type:<strong>Hardcover</strong>
+              </li>
+              <li>
+                Number of pages:<strong>book.numberOfPages</strong>
+              </li>
+              <li>
+                Year of publication:<strong>book.publicationYear</strong>
+              </li>
+              <li>
+                Format: <strong>book.format</strong>
+              </li>
+              <li>
+                Language: <strong>book.lang</strong>
+              </li>
+              <li>
+                Illustrations: <strong>book.illustrations</strong>
+              </li>
+            </ul>
+          </div>
         </div>
         <ProductList
           title="You may also like"
