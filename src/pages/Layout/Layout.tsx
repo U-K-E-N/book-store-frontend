@@ -1,17 +1,14 @@
 import { Outlet } from 'react-router-dom';
 import { Footer } from '../../components/Footer';
 import { Header } from '../../components/Header';
-
-import audioBooks from '../../../public/books/audiobook.json';
-import kindleBooks from '../../../public/books/kindle.json';
-import paperBooks from '../../../public/books/paperback.json';
+import { useFetchAllBooks } from '../../hooks/useFetchAllBooks';
 
 export const Layout = () => {
-  const allBooks = [...audioBooks, ...kindleBooks, ...paperBooks];
+  const { data } = useFetchAllBooks();
 
   return (
     <>
-      <Header allBooks={allBooks} />
+      <Header allBooks={data} />
       <main className="main">
         <Outlet />
       </main>
