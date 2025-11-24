@@ -4,6 +4,7 @@ import { Input } from '../Input';
 import { Dropdown } from '../Dropdown';
 import './MobileMenu.scss';
 import React from 'react';
+import { useStore } from '../../hooks/useStore';
 
 type MobileMenuProps = {
   onClose: () => void;
@@ -16,6 +17,8 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({
   value,
   onChange,
 }) => {
+  const { cart, favourites } = useStore();
+  const totalItemsCart = cart.reduce((sum, item) => sum + item.quantity, 0);
   return (
     <div className="mobile-menu">
       <div className="mobile-menu__top">
@@ -103,18 +106,24 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({
       <div className="mobile-menu__icons">
         <NavLink
           to="/favourites"
-          className="mobile-menu__icon-wrapper"
+          className="mobile-menu__icon-wrapper mobile-menu__quantity-wrapper"
           id="favorite-icon"
           onClick={onClose}
         >
+          {favourites.length !== 0 && (
+            <span className="mobile-menu__quantity">{favourites.length}</span>
+          )}
           <BookStoreIcon iconName={IconName.Heart} />
         </NavLink>
         <NavLink
           to="/cart"
-          className="mobile-menu__icon-wrapper"
+          className="mobile-menu__icon-wrapper mobile-menu__quantity-wrapper"
           id="cart-icon"
           onClick={onClose}
         >
+          {totalItemsCart !== 0 && (
+            <span className="mobile-menu__quantity">{totalItemsCart}</span>
+          )}
           <BookStoreIcon
             iconName={IconName.Cart}
             // fontSize={32}

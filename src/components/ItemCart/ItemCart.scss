@@ -74,7 +74,10 @@
   &__btn {
     width: 32px;
     height: 32px;
-    color: var(--color-secondary);
+
+    &.disabled {
+      color: var(--color-secondary);
+    }
 
     &--delete {
       width: 16px;

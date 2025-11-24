@@ -5,8 +5,11 @@ import { NavLink } from 'react-router-dom';
 import { BookStoreIcon, IconName } from '../BookStoreIcon';
 import { Dropdown } from '../Dropdown';
 import { MobileMenu } from './MobileMenu';
+
 import type { BookBase } from '../../types/BookBase';
 import { SearchDropdown } from '../SearchDropdown';
+
+import { useStore } from '../../hooks/useStore';
 
 interface HeaderProps {
   allBooks: BookBase[];
@@ -14,7 +17,9 @@ interface HeaderProps {
 
 export const Header: React.FC<HeaderProps> = ({ allBooks }) => {
   const [query, setQuery] = useState('');
-  const [selectedCategory, setSelectedCategory] = useState('Category');
+  const [selectedCategory, setSelectedCategory] = useState<string | number>(
+    'Category',
+  );
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const [openInput, setOpenInput] = useState(false);
@@ -24,6 +29,9 @@ export const Header: React.FC<HeaderProps> = ({ allBooks }) => {
       book.name.toLowerCase().includes(query.toLowerCase()) ||
       book.author?.toLowerCase().includes(query.toLowerCase()),
   );
+
+  const { cart, favourites } = useStore();
+  const totalItemsCart = cart.reduce((sum, item) => sum + item.quantity, 0);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setQuery(e.target.value);
@@ -147,16 +155,22 @@ export const Header: React.FC<HeaderProps> = ({ allBooks }) => {
               </div>
               <NavLink
                 to="/favourites"
-                className="header__icon-wrapper"
+                className="header__icon-wrapper header__quantity-wrapper"
                 id="favorite-icon"
               >
+                {favourites.length !== 0 && (
+                  <span className="header__quantity">{favourites.length}</span>
+                )}
                 <BookStoreIcon iconName={IconName.Heart} />
               </NavLink>
               <NavLink
                 to="/cart"
-                className="header__icon-wrapper"
+                className="header__icon-wrapper header__quantity-wrapper"
                 id="cart-icon"
               >
+                {totalItemsCart !== 0 && (
+                  <span className="header__quantity">{totalItemsCart}</span>
+                )}
                 <BookStoreIcon iconName={IconName.Cart} />
               </NavLink>
 
