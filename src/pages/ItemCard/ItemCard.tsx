@@ -1,11 +1,5 @@
-import { ProductList } from '../../components/ProductList';
-import audioBooks from '../../../public/books/audiobook.json';
-import kindleBooks from '../../../public/books/kindle.json';
-import paperBooks from '../../../public/books/paperback.json';
 import { AddToCartButton, FavoriteButton } from '../../components/Buttons';
 import './ItemCard.scss';
-
-const books = [...audioBooks, ...kindleBooks, ...paperBooks];
 
 export const ItemCard = () => {
   return (
@@ -121,10 +115,6 @@ export const ItemCard = () => {
             </ul>
           </div>
         </div>
-        <ProductList
-          title="You may also like"
-          books={books}
-        />
       </div>
     </div>
   );
