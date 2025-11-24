@@ -4,6 +4,7 @@ import type { Book } from '../../types/Book';
 import { BookStoreIcon, IconName } from '../BookStoreIcon';
 
 import './ItemCart.scss';
+import { NavLink } from 'react-router-dom';
 
 type ItemCartProps = {
   book: Book;
@@ -25,15 +26,20 @@ export const ItemCart = ({ book, quantity }: ItemCartProps) => {
           <BookStoreIcon iconName={IconName.Close} />
         </button>
 
-        <img
-          className="item-cart__img"
-          alt={book.name}
-          src={`/books/${book.images[0]}`}
-        />
-        <div className="item-cart__descr">
+        <NavLink to="/">
+          <img
+            className="item-cart__img"
+            alt={book.name}
+            src={`/books/${book.images[0]}`}
+          />
+        </NavLink>
+        <NavLink
+          to="/"
+          className="item-cart__descr"
+        >
           <h3 className="item-cart__name">{book.name}</h3>
           <p className="item-cart__author">{book.author}</p>
-        </div>
+        </NavLink>
       </div>
 
       <div className="item-cart__bottom">

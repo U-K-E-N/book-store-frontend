@@ -8,12 +8,17 @@ import { useStore } from '../../hooks/useStore';
 
 type MobileMenuProps = {
   onClose: () => void;
+  value: string;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
-export const MobileMenu: React.FC<MobileMenuProps> = ({ onClose }) => {
+export const MobileMenu: React.FC<MobileMenuProps> = ({
+  onClose,
+  value,
+  onChange,
+}) => {
   const { cart, favourites } = useStore();
   const totalItemsCart = cart.reduce((sum, item) => sum + item.quantity, 0);
-
   return (
     <div className="mobile-menu">
       <div className="mobile-menu__top">
@@ -81,8 +86,8 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ onClose }) => {
       <div className="mobile-menu__search">
         <Input
           placeholder="Find a book or author"
-          value={''}
-          onChange={() => console.log(123)}
+          value={value}
+          onChange={onChange}
         />
       </div>
 

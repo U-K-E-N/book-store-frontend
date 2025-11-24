@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
-import { SliderButton } from '../Buttons';
-import { IconName } from '../BookStoreIcon';
+import { BookStoreIcon, IconName } from '../BookStoreIcon';
 import './Footer.scss';
 import classNames from 'classnames';
 import { useState } from 'react';
@@ -98,16 +97,16 @@ export const Footer = () => {
         </nav>
 
         <div className="footer__back-wrapper">
-          <div
+          <button
+            type="button"
             className="footer__back"
             onClick={scrollToTop}
           >
             Back to top
-            <SliderButton
-              disabled={false}
-              iconName={IconName.ArrowUp}
-            />
-          </div>
+            <div className="slider-button">
+              <BookStoreIcon iconName={IconName.ArrowUp} />
+            </div>
+          </button>
         </div>
       </div>
     </footer>
