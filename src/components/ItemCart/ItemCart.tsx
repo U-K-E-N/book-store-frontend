@@ -1,3 +1,5 @@
+import classNames from 'classnames';
+import { useStore } from '../../hooks/useStore';
 import type { Book } from '../../types/Book';
 import { BookStoreIcon, IconName } from '../BookStoreIcon';
 
@@ -5,9 +7,12 @@ import './ItemCart.scss';
 
 type ItemCartProps = {
   book: Book;
+  quantity: number;
 };
 
-export const ItemCart = ({ book }: ItemCartProps) => {
+export const ItemCart = ({ book, quantity }: ItemCartProps) => {
+  const { removeFromCart, increaseQuantity, decreaseQuantity } = useStore();
+
   return (
     <div className="item-cart">
       <div className="item-cart__top">
@@ -15,6 +20,7 @@ export const ItemCart = ({ book }: ItemCartProps) => {
           className="item-cart__btn item-cart__btn--delete"
           type="button"
           aria-label="Remove from cart"
+          onClick={() => removeFromCart(book.id)}
         >
           <BookStoreIcon iconName={IconName.Close} />
         </button>
@@ -33,17 +39,22 @@ export const ItemCart = ({ book }: ItemCartProps) => {
       <div className="item-cart__bottom">
         <div>
           <button
-            className="item-cart__btn item-cart__btn--minus"
+            className={classNames('item-cart__btn item-cart__btn--minus', {
+              disabled: quantity === 1,
+            })}
             type="button"
             aria-label="Remove one item"
+            disabled={quantity === 1}
+            onClick={() => decreaseQuantity(book.id)}
           >
             <BookStoreIcon iconName={IconName.Minus} />
           </button>
-          <span className="item-cart__amount">1</span>
+          <span className="item-cart__amount">{quantity}</span>
           <button
             className="item-cart__btn item-cart__btn--plus"
             type="button"
             aria-label="Add one item"
+            onClick={() => increaseQuantity(book.id)}
           >
             <BookStoreIcon iconName={IconName.Plus} />
           </button>

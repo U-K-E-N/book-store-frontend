@@ -10,7 +10,7 @@ interface DropdownProps {
     label: string;
     value: string | number;
   }[];
-  dropdownText: string;
+  dropdownText: string | number;
   onSelect: (value: string | number) => void;
 }
 

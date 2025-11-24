@@ -2,12 +2,25 @@ import './ProductCard.scss';
 import type { Book } from '../../types/Book';
 import { BookStoreIcon, IconName } from '../BookStoreIcon';
 import { AddToCartButton, FavoriteButton } from '../Buttons';
+import { useStore } from '../../hooks/useStore';
 
 type ProductCardProps = {
   book: Book;
 };
 
 export const ProductCard = ({ book }: ProductCardProps) => {
+  const {
+    cart,
+    favourites,
+    addToFavourites,
+    removeFromFavourites,
+    addToCart,
+    removeFromCart,
+  } = useStore();
+
+  const inCart = cart.some((item) => item.book.id === book.id);
+  const inFav = favourites.some((item) => item.id === book.id);
+
   return (
     <div className="productCard">
       {'listeningLength' in book && (
@@ -29,10 +42,12 @@ export const ProductCard = ({ book }: ProductCardProps) => {
         <p className="productCard__author">{book.author}</p>
 
         <div className="productCard__prices">
-          <span className="productCard__price">&#36;{book.priceRegular}</span>
+          <span className="productCard__price">
+            &#36;{book.priceDiscount || book.priceRegular}
+          </span>
           {book.priceDiscount && (
             <span className="productCard__oldPrice">
-              &#36;{book.priceDiscount}
+              &#36;{book.priceRegular}
             </span>
           )}
         </div>
@@ -45,12 +60,16 @@ export const ProductCard = ({ book }: ProductCardProps) => {
 
         <div className="productCard__actions">
           <AddToCartButton
-            selected={false}
-            onSelect={() => {}}
+            selected={inCart}
+            onSelect={() =>
+              inCart ? removeFromCart(book.id) : addToCart(book)
+            }
           />
           <FavoriteButton
-            selected={false}
-            onSelect={() => {}}
+            selected={inFav}
+            onSelect={() =>
+              inFav ? removeFromFavourites(book.id) : addToFavourites(book)
+            }
           />
         </div>
       </div>
