@@ -1,11 +1,13 @@
-/* eslint-disable react-hooks/set-state-in-effect */
-import { useCallback, useState, useEffect } from 'react';
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useCallback, useState, useEffect, useMemo } from 'react';
 import { Dropdown } from '../Dropdown';
 import { ProductCard } from '../ProductCard';
 import './Catalog.scss';
 import Paginator from '../Paginator/Paginator';
 import type { Book } from '../../types/Book';
 import { useSearchParams } from 'react-router-dom';
+import { Loader } from '../Loader';
+import { ErrorMessage } from '../ErrorMessage';
 
 const DEFAULT_ITEM_COUNT = 16;
 const DEFAULT_PAGE = 1;
@@ -20,6 +22,8 @@ enum sortOption {
 }
 
 type CatalogProps = {
+  error: Error | null;
+  isLoading: boolean;
   title: string;
   catalogBooks: Book[];
 };
@@ -57,18 +61,29 @@ function sortedcatalogBooks(catalogBooks: Book[], sortBy: string) {
   return visiblecatalogBooks;
 }
 
-export const Catalog = ({ title, catalogBooks }: CatalogProps) => {
+export const Catalog = ({
+  error,
+  isLoading,
+  title,
+  catalogBooks,
+}: CatalogProps) => {
   const [searchParams, setSearchParams] = useSearchParams();
 
   const [sortBy, setsortBy] = useState<sortOption>(sortOption.Newest);
   const [itemsCount, setItemsCount] = useState(DEFAULT_ITEM_COUNT);
   const [page, setPage] = useState(DEFAULT_PAGE);
 
-  const sortedcatalogBooksList = sortedcatalogBooks(catalogBooks, sortBy);
-
-  const [visiblecatalogBooks, setVisiblecatalogBooks] = useState(
-    sortedcatalogBooksList.slice(0, itemsCount),
+  const sortedcatalogBooksList = useMemo(
+    () => sortedcatalogBooks(catalogBooks, sortBy),
+    [catalogBooks, sortBy],
   );
+
+  const [visiblecatalogBooks, setVisiblecatalogBooks] = useState<Book[]>([]);
+
+  useEffect(() => {
+    setVisiblecatalogBooks(sortedcatalogBooksList.slice(0, itemsCount));
+    setPage(1);
+  }, [sortedcatalogBooksList, itemsCount]);
 
   const getTotalPageCount = useCallback(
     (rowCount: number): number => Math.ceil(rowCount / itemsCount),
@@ -155,6 +170,26 @@ export const Catalog = ({ title, catalogBooks }: CatalogProps) => {
     handlePageButtonClick(1, null, option);
   };
 
+  if (isLoading) {
+    return (
+      <section>
+        <div className="container">
+          <Loader />
+        </div>
+      </section>
+    );
+  }
+
+  if (error) {
+    return (
+      <section>
+        <div className="container">
+          <ErrorMessage />
+        </div>
+      </section>
+    );
+  }
+
   return (
     <section>
       <div className="container">
@@ -175,7 +210,7 @@ export const Catalog = ({ title, catalogBooks }: CatalogProps) => {
 
           <Dropdown
             label="Items on page"
-            variant="sort"
+            variant="number"
             options={[
               { label: '16', value: 16 },
               { label: '6', value: 6 },
