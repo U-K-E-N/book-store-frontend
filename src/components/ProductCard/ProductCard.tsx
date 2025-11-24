@@ -3,6 +3,7 @@ import type { Book } from '../../types/Book';
 import { BookStoreIcon, IconName } from '../BookStoreIcon';
 import { AddToCartButton, FavoriteButton } from '../Buttons';
 import { useStore } from '../../hooks/useStore';
+import { NavLink } from 'react-router-dom';
 
 type ProductCardProps = {
   book: Book;
@@ -30,16 +31,23 @@ export const ProductCard = ({ book }: ProductCardProps) => {
       )}
 
       <div className="productCard__imageWrapper">
-        <img
-          src={`/books/${book.images[0]}`}
-          alt={book.name}
-          className="productCard__image"
-        />
+        <NavLink to="/">
+          <img
+            src={`/books/${book.images[0]}`}
+            alt={book.name}
+            className="productCard__image"
+          />
+        </NavLink>
       </div>
 
       <div className="productCard__content">
-        <h3 className="productCard__name">{book.name}</h3>
-        <p className="productCard__author">{book.author}</p>
+        <NavLink
+          to="/"
+          className="productCard__content-wrapper"
+        >
+          <h3 className="productCard__name">{book.name}</h3>
+          <p className="productCard__author">{book.author}</p>
+        </NavLink>
 
         <div className="productCard__prices">
           <span className="productCard__price">

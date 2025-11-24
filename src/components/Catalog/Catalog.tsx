@@ -24,11 +24,16 @@ type CatalogProps = {
   catalogBooks: Book[];
 };
 
-function sortCheaper(a: Book, b: Book) {
+enum Order {
+  Ascending = 1,
+  Descending = 2,
+}
+
+function sortPrice(a: Book, b: Book, order: Order) {
   const priceA = a.priceDiscount ?? a.priceRegular;
   const priceB = b.priceDiscount ?? b.priceRegular;
 
-  return priceA - priceB;
+  return order === Order.Ascending ? priceA - priceB : priceB - priceA;
 }
 
 function sortedcatalogBooks(catalogBooks: Book[], sortBy: string) {
@@ -39,10 +44,10 @@ function sortedcatalogBooks(catalogBooks: Book[], sortBy: string) {
         return b.publicationYear - a.publicationYear;
 
       case sortOption.Cheaper:
-        return sortCheaper(a, b);
+        return sortPrice(a, b, Order.Ascending);
 
       case sortOption.Expensive:
-        return b.priceRegular - a.priceRegular;
+        return sortPrice(a, b, Order.Descending);
 
       default:
         return 0;

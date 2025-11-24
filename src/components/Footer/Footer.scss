@@ -131,3 +131,14 @@
     color: var(--color-secondary);
   }
 }
+
+.slider-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-sm);
+  border: none;
+  color: var(--color-primary);
+}
