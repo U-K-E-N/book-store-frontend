@@ -5,13 +5,19 @@ import { NavLink } from 'react-router-dom';
 import { BookStoreIcon, IconName } from '../BookStoreIcon';
 import { Dropdown } from '../Dropdown';
 import { MobileMenu } from './MobileMenu';
+import { useStore } from '../../hooks/useStore';
 
 export const Header = () => {
   const [query, setQuery] = useState('');
-  const [selectedCategory, setSelectedCategory] = useState('Category');
+  const [selectedCategory, setSelectedCategory] = useState<string | number>(
+    'Category',
+  );
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const [openInput, setOpenInput] = useState(false);
+
+  const { cart, favourites } = useStore();
+  const totalItemsCart = cart.reduce((sum, item) => sum + item.quantity, 0);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setQuery(e.target.value);
@@ -120,16 +126,22 @@ export const Header = () => {
               </div>
               <NavLink
                 to="/favourites"
-                className="header__icon-wrapper"
+                className="header__icon-wrapper header__quantity-wrapper"
                 id="favorite-icon"
               >
+                {favourites.length !== 0 && (
+                  <span className="header__quantity">{favourites.length}</span>
+                )}
                 <BookStoreIcon iconName={IconName.Heart} />
               </NavLink>
               <NavLink
                 to="/cart"
-                className="header__icon-wrapper"
+                className="header__icon-wrapper header__quantity-wrapper"
                 id="cart-icon"
               >
+                {totalItemsCart !== 0 && (
+                  <span className="header__quantity">{totalItemsCart}</span>
+                )}
                 <BookStoreIcon iconName={IconName.Cart} />
               </NavLink>
 
