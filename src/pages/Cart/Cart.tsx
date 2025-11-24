@@ -1,37 +1,23 @@
 import { ItemCart } from '../../components/ItemCart';
-
 import './Cart.scss';
-
-import audioBooks from '../../../public/books/audiobook.json';
-import kindleBooks from '../../../public/books/kindle.json';
-import paperBooks from '../../../public/books/paperback.json';
 import { NavLink } from 'react-router-dom';
 import { BookStoreIcon, IconName } from '../../components/BookStoreIcon';
+import { useStore } from '../../hooks/useStore';
 
 export const Cart = () => {
-  const filteredAudioBooks = audioBooks
-    .filter((book) => book.publicationYear > 2020)
-    .filter((book) => book.lang === 'en');
+  const { cart } = useStore();
 
-  const filteredKindleBooks = kindleBooks
-    .filter((book) => book.publicationYear > 2020)
-    .filter((book) => book.lang === 'en');
-
-  const filteredPaperBooks = paperBooks
-    .filter((book) => book.publicationYear > 2020)
-    .filter((book) => book.lang === 'en');
-
-  const books = [
-    ...filteredAudioBooks,
-    ...filteredKindleBooks,
-    ...filteredPaperBooks,
-  ];
+  const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
 
   const totalPrice = () =>
-    books.reduce(
-      (sum, book) => sum + (book.priceDiscount || book.priceRegular),
-      0,
-    );
+    cart
+      .reduce(
+        (sum, item) =>
+          sum +
+          (item.book.priceDiscount || item.book.priceRegular) * item.quantity,
+        0,
+      )
+      .toFixed(2);
 
   return (
     <section className="section cart">
@@ -48,19 +34,22 @@ export const Cart = () => {
 
         <div className="cart__content">
           <ul className="cart__list">
-            {books.map((book) => (
+            {cart.map((item) => (
               <li
                 className="cart__item"
-                key={book.id}
+                key={item.book.id}
               >
-                <ItemCart book={book} />
+                <ItemCart
+                  book={item.book}
+                  quantity={item.quantity}
+                />
               </li>
             ))}
           </ul>
 
           <div className="cart__summary summary">
             <h3 className="summary__title">&#36;{totalPrice()}</h3>
-            <p className="summary__subtitle">Total for {books.length} items</p>
+            <p className="summary__subtitle">Total for {totalItems} items</p>
             <button
               className="summary__btn"
               type="button"
