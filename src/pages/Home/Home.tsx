@@ -1,41 +1,52 @@
 import { ProductList } from '../../components/ProductList';
-
-import audioBooks from '../../../public/books/audiobook.json';
-import kindleBooks from '../../../public/books/kindle.json';
-import paperBooks from '../../../public/books/paperback.json';
 import { Carousel } from '../../components/Carousel';
 import { Categories } from '../../components/Categories';
 
+import { useFetchAllBooks } from '../../hooks/useFetchAllBooks';
+import { useMemo } from 'react';
+import { shuffle } from '../../utils/shuffle';
+import { Loader } from '../../components/Loader';
+import { ErrorMessage } from '../../components/ErrorMessage';
+
 export const Home = () => {
-  const filteredAudioBooks = audioBooks
-    .filter((book) => book.publicationYear > 2020)
-    .filter((book) => book.lang === 'en');
+  const { data, loading, error } = useFetchAllBooks();
 
-  const filteredKindleBooks = kindleBooks
-    .filter((book) => book.publicationYear > 2020)
-    .filter((book) => book.lang === 'en');
+  const randomBooks = useMemo(() => {
+    if (!data.length) return [];
+    return shuffle(data).slice(0, 16);
+  }, [data]);
 
-  const filteredPaperBooks = paperBooks
-    .filter((book) => book.publicationYear > 2020)
-    .filter((book) => book.lang === 'en');
+  const newBooks = useMemo(
+    () =>
+      [...data]
+        .sort((a, b) => b.publicationYear - a.publicationYear)
+        .slice(0, 24),
+    [data],
+  );
 
-  const books = [
-    ...filteredAudioBooks,
-    ...filteredKindleBooks,
-    ...filteredPaperBooks,
-  ];
+  if (loading) {
+    return <Loader />;
+  }
+
+  if (error) {
+    return <ErrorMessage />;
+  }
+
+  console.log(newBooks);
 
   return (
     <>
       <Carousel />
       <ProductList
+        id="new"
         title="New books"
-        books={books}
+        books={newBooks}
       />
       <Categories />
       <ProductList
+        id="recommended"
         title="You might like"
-        books={books}
+        books={randomBooks}
       />
     </>
   );

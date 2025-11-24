@@ -11,21 +11,22 @@ import type { Book } from '../../types/Book';
 import { ProductCard } from '../ProductCard';
 
 type ProductListProps = {
+  id: string;
   title: string;
   books: Book[];
 };
 
-export const ProductList = ({ title, books }: ProductListProps) => {
+export const ProductList = ({ id, title, books }: ProductListProps) => {
   return (
-    <section className="section product-list">
+    <section className={`section product-list product-list--${id}`}>
       <div className="container">
         <div className="product-list__header">
           <h2 className="product-list__title">{title}</h2>
           <div className="custom-buttons">
-            <button className="custom-prev">
+            <button className={`custom-prev custom-prev--${id}`}>
               <BookStoreIcon iconName={IconName.ArrowLeft} />
             </button>
-            <button className="custom-next">
+            <button className={`custom-next custom-next--${id}`}>
               <BookStoreIcon iconName={IconName.ArrowRight} />
             </button>
           </div>
@@ -34,8 +35,8 @@ export const ProductList = ({ title, books }: ProductListProps) => {
           <Swiper
             modules={[Navigation]}
             navigation={{
-              nextEl: '.custom-next',
-              prevEl: '.custom-prev',
+              nextEl: `.custom-next--${id}`,
+              prevEl: `.custom-prev--${id}`,
             }}
             spaceBetween={16}
             slidesPerView="auto"
