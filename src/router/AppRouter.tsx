@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Routes, Route, HashRouter } from 'react-router-dom';
 import { Layout } from '../pages/Layout';
 import { Home } from '../pages/Home';
 import { Paper } from '../pages/Paper';
@@ -12,7 +12,7 @@ import { ItemCard } from '../pages/ItemCard';
 import { AboutPage } from '../pages/AboutPage';
 
 export const AppRouter = () => (
-  <BrowserRouter>
+  <HashRouter>
     <Routes>
       <Route
         path="/"
@@ -43,7 +43,7 @@ export const AppRouter = () => (
           element={<Cart />}
         />
         <Route
-          path="/about"
+          path="about"
           element={<AboutPage />}
         />
         <Route
@@ -61,5 +61,5 @@ export const AppRouter = () => (
         element={<AuthPage />}
       />
     </Routes>
-  </BrowserRouter>
+  </HashRouter>
 );
