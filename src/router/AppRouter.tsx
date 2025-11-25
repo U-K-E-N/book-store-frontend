@@ -8,6 +8,7 @@ import { Favourites } from '../pages/Favourites';
 import { Cart } from '../pages/Cart';
 import { NotFoundPage } from '../pages/NotFoundPage';
 import { AuthPage } from '../pages/AuthPage';
+import { AboutPage } from '../pages/AboutPage';
 
 export const AppRouter = () => (
   <BrowserRouter>
@@ -39,6 +40,10 @@ export const AppRouter = () => (
         <Route
           path="cart"
           element={<Cart />}
+        />
+        <Route
+          path="/about"
+          element={<AboutPage />}
         />
         <Route
           path="*"
