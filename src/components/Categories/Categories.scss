@@ -51,6 +51,15 @@
   padding-bottom: 23px;
 }
 
+.category__content-text {
+  padding-left: 7px;
+}
+
+.category__content-title {
+  padding-top: 5px;
+  padding-left: 7px;
+}
+
 @include mixins.on-tablet {
   .categories {
     max-width: 593px;
