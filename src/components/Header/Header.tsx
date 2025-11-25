@@ -189,8 +189,10 @@ export const Header: React.FC<HeaderProps> = ({ allBooks }) => {
       {isMobileMenuOpen && (
         <MobileMenu
           onClose={toggleMobileMenu}
-          value={query}
-          onChange={handleChange}
+          // value={query}
+          // setValue={setQuery}
+          // onChange={handleChange}
+          allBooks={allBooks}
         />
       )}
     </>

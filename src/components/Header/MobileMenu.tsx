@@ -1,23 +1,31 @@
 import { NavLink } from 'react-router-dom';
 import { BookStoreIcon, IconName } from '../BookStoreIcon';
 import { Input } from '../Input';
-import { Dropdown } from '../Dropdown';
+// import { Dropdown } from '../Dropdown';
 import './MobileMenu.scss';
-import React from 'react';
+import React, { useState } from 'react';
 import { useStore } from '../../hooks/useStore';
+import { SearchDropdown } from '../SearchDropdown';
+import type { BookBase } from '../../types/BookBase';
 
 type MobileMenuProps = {
   onClose: () => void;
-  value: string;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  allBooks: BookBase[];
 };
 
 export const MobileMenu: React.FC<MobileMenuProps> = ({
   onClose,
-  value,
-  onChange,
+  allBooks,
 }) => {
   const { cart, favourites } = useStore();
+  const [query, setQuery] = useState('');
+
+  const filteredBooks = allBooks.filter(
+    (book) =>
+      book.name.toLowerCase().includes(query.toLowerCase()) ||
+      book.author?.toLowerCase().includes(query.toLowerCase()),
+  );
+
   const totalItemsCart = cart.reduce((sum, item) => sum + item.quantity, 0);
   return (
     <div className="mobile-menu">
@@ -40,6 +48,27 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({
         >
           <BookStoreIcon iconName={IconName.Close} />
         </div>
+      </div>
+
+      <div className="mobile-menu__search">
+        <Input
+          placeholder="Find a book or author"
+          value={query}
+          onChange={(event) => setQuery(event.target.value)}
+        />
+        {query.length > 0 && (
+          <button
+            className="header__input-clear"
+            onClick={() => setQuery('')}
+            aria-label="Clear input"
+          >
+            ×
+          </button>
+        )}
+
+        {query.length > 2 && filteredBooks.length > 0 && (
+          <SearchDropdown books={filteredBooks} />
+        )}
       </div>
 
       <nav className="mobile-menu__nav">
@@ -83,15 +112,7 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({
         </ul>
       </nav>
 
-      <div className="mobile-menu__search">
-        <Input
-          placeholder="Find a book or author"
-          value={value}
-          onChange={onChange}
-        />
-      </div>
-
-      <div className="mobile-menu__categories">
+      {/* <div className="mobile-menu__categories">
         <Dropdown
           variant="category"
           dropdownText="Categories"
@@ -102,7 +123,7 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({
           ]}
           onSelect={() => {}}
         />
-      </div>
+      </div> */}
       <div className="mobile-menu__icons">
         <NavLink
           to="/favourites"
