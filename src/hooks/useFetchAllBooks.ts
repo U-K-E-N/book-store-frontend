@@ -14,9 +14,9 @@ export function useFetchAllBooks() {
         setLoading(true);
 
         const [audioRes, kindleRes, paperRes] = await Promise.all([
-          fetch('/books/audiobook.json'),
-          fetch('/books/kindle.json'),
-          fetch('/books/paperback.json'),
+          fetch(`${import.meta.env.BASE_URL}books/audiobook.json`),
+          fetch(`${import.meta.env.BASE_URL}books/kindle.json`),
+          fetch(`${import.meta.env.BASE_URL}books/paperback.json`),
         ]);
 
         if (!audioRes.ok || !kindleRes.ok || !paperRes.ok) {

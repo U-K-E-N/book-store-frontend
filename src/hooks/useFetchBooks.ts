@@ -14,7 +14,9 @@ export function useFetchBooks(fileName: string) {
       try {
         setLoading(true);
 
-        const res = await fetch(`/books/${fileName}.json`);
+        const res = await fetch(
+          `${import.meta.env.BASE_URL}books/${fileName}.json`,
+        );
 
         if (!res.ok) {
           throw new Error(`Failed to load ${fileName} books`);
