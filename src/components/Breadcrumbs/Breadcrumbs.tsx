@@ -41,7 +41,7 @@ export const Breadcrumbs = ({ book }: BreadcrumbsProps) => {
 
       <Link
         className="breadcrumbs__link breadcrumbs__link--category"
-        to={`/category/${mainCategory.toLowerCase().replace(/\s+/g, '-')}`}
+        to={`/${book.type}/${mainCategory.toLowerCase().replace(/\s+/g, '-')}`}
       >
         {mainCategory}
       </Link>

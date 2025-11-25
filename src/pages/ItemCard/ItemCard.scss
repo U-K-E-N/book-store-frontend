@@ -4,6 +4,10 @@
 .book {
   margin-top: -10px;
 
+  @include on-desktop {
+    margin-top: -40px;
+  }
+
   &__container {
     margin-bottom: 56px;
 
@@ -47,6 +51,7 @@
     @include on-tablet {
       display: flex;
       gap: 32px;
+      margin-bottom: 32px;
     }
     @include on-desktop {
       gap: 175px;
@@ -150,6 +155,9 @@
 
   &__descr-list--top {
     margin-bottom: 32px;
+    @include on-tablet {
+      margin-bottom: 0;
+    }
   }
 
   &__descr-item {
@@ -198,6 +206,7 @@
     }
 
     @include on-desktop {
+      margin-bottom: 0;
       max-width: 560px;
     }
   }

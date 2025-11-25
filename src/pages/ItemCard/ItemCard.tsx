@@ -12,6 +12,7 @@ import { useLanguage } from '../../context/LanguageContext';
 import { useTranslate } from '../../context/LanguageContext';
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
+import type { translations } from '../../translations';
 
 export const ItemCard = () => {
   const { data, loading, error } = useFetchAllBooks();
@@ -68,16 +69,30 @@ export const ItemCard = () => {
       item.category.some((cat) => book.category.includes(cat)),
   );
 
+  const formatLocalized = (format?: string) => {
+    if (!format) return '';
+    return format.replace(/\bmm\b/, 'мм');
+  };
+
+  type TranslationKeys = keyof (typeof translations)['en'];
+
+  const getIllustrationsText = (
+    hasIllustrations: boolean | undefined,
+    t: (key: TranslationKeys) => string,
+  ) => {
+    return hasIllustrations ? t('illustrations') : t('noIllustrations');
+  };
+
   const characteristics = [
-    { label: 'Author', value: t('author') },
-    { label: 'Cover type', value: t('coverType') },
-    { label: 'Number of pages', value: t('numberOfPages') },
-    { label: 'Year of publication', value: t('yearOfPublication') },
-    { label: 'Format', value: t('format') },
-    { label: 'Language', value: t('language') },
+    { label: t('author'), value: book.author },
+    { label: t('coverType'), value: book.coverType },
+    { label: t('numberOfPages'), value: book.numberOfPages },
+    { label: t('yearOfPublication'), value: book.publicationYear },
+    { label: t('format'), value: formatLocalized(book.format) },
+    { label: t('language'), value: book.lang },
     {
-      label: 'Illustrations',
-      value: book.illustrations ? 'Illustrations' : 'No Illustrations',
+      label: t('illustrations'),
+      value: getIllustrationsText(book.illustrations ?? false, t),
     },
   ];
 
@@ -227,13 +242,12 @@ export const ItemCard = () => {
             </div>
           </div>
         </div>
+        <ProductList
+          id="card"
+          title={t('youMayAlsoLike')}
+          books={recommended}
+        />
       </div>
-
-      <ProductList
-        id="card"
-        title={t('youMayAlsoLike')}
-        books={recommended}
-      />
     </>
   );
 };
