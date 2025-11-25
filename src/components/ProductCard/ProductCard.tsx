@@ -4,6 +4,7 @@ import { AddToCartButton, FavoriteButton } from '../Buttons';
 import { useStore } from '../../hooks/useStore';
 import { NavLink } from 'react-router-dom';
 import type { GeneralBook } from '../../types/GeneralBook';
+import { normalizeCategory } from '../../utils/normalizeCategory';
 
 type ProductCardProps = {
   book: GeneralBook;
@@ -26,7 +27,7 @@ export const ProductCard = ({ book }: ProductCardProps) => {
 
       <div className="productCard__imageWrapper">
         <NavLink
-          to={`/${book.type}/${book.category[0].toLowerCase().replace(/\s+/g, '-')}/${book.slug}`}
+          to={`/${book.type}/${normalizeCategory(book.category[0])}/${book.slug}`}
         >
           <img
             src={`${import.meta.env.BASE_URL}books/${book.images[0]}`}
@@ -38,7 +39,7 @@ export const ProductCard = ({ book }: ProductCardProps) => {
 
       <div className="productCard__content">
         <NavLink
-          to={`/${book.type}/${book.category[0].toLowerCase().replace(/\s+/g, '-')}/${book.slug}`}
+          to={`/${book.type}/${normalizeCategory(book.category[0])}/${book.slug}`}
           className="productCard__content-wrapper"
         >
           <h3 className="productCard__name">{book.name}</h3>

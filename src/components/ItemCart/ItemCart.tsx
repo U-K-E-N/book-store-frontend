@@ -5,6 +5,7 @@ import { BookStoreIcon, IconName } from '../BookStoreIcon';
 import './ItemCart.scss';
 import { NavLink } from 'react-router-dom';
 import type { GeneralBook } from '../../types/GeneralBook';
+import { normalizeCategory } from '../../utils/normalizeCategory';
 
 type ItemCartProps = {
   book: GeneralBook;
@@ -27,7 +28,7 @@ export const ItemCart = ({ book, quantity }: ItemCartProps) => {
         </button>
 
         <NavLink
-          to={`/${book.type}/${book.category[0].toLowerCase().replace(/\s+/g, '-')}/${book.slug}`}
+          to={`/${book.type}/${normalizeCategory(book.category[0])}/${book.slug}`}
         >
           <img
             className="item-cart__img"
@@ -36,7 +37,7 @@ export const ItemCart = ({ book, quantity }: ItemCartProps) => {
           />
         </NavLink>
         <NavLink
-          to={`/${book.type}/${book.category[0].toLowerCase().replace(/\s+/g, '-')}/${book.slug}`}
+          to={`/${book.type}/${normalizeCategory(book.category[0])}/${book.slug}`}
           className="item-cart__descr"
         >
           <h3 className="item-cart__name">{book.name}</h3>
