@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import type { GeneralBook } from '../../types/GeneralBook';
 import './ImageGallery.scss';
 import classNames from 'classnames';
@@ -10,6 +10,10 @@ type ImageGalleryProps = {
 
 export const ImageGallery = ({ images, book }: ImageGalleryProps) => {
   const [activeImg, setActiveImg] = useState(images[0]);
+
+  useEffect(() => {
+    setActiveImg(images[0]);
+  }, [images]);
 
   return (
     <div className="book__images">
