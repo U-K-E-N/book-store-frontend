@@ -4,10 +4,10 @@ import { Dropdown } from '../Dropdown';
 import { ProductCard } from '../ProductCard';
 import './Catalog.scss';
 import Paginator from '../Paginator/Paginator';
-import type { Book } from '../../types/Book';
 import { useSearchParams } from 'react-router-dom';
 import { Loader } from '../Loader';
 import { ErrorMessage } from '../ErrorMessage';
+import type { GeneralBook } from '../../types/GeneralBook';
 
 const DEFAULT_ITEM_COUNT = 16;
 const DEFAULT_PAGE = 1;
@@ -25,7 +25,7 @@ type CatalogProps = {
   error: Error | null;
   isLoading: boolean;
   title: string;
-  catalogBooks: Book[];
+  catalogBooks: GeneralBook[];
 };
 
 enum Order {
@@ -33,16 +33,16 @@ enum Order {
   Descending = 2,
 }
 
-function sortPrice(a: Book, b: Book, order: Order) {
+function sortPrice(a: GeneralBook, b: GeneralBook, order: Order) {
   const priceA = a.priceDiscount ?? a.priceRegular;
   const priceB = b.priceDiscount ?? b.priceRegular;
 
   return order === Order.Ascending ? priceA - priceB : priceB - priceA;
 }
 
-function sortedcatalogBooks(catalogBooks: Book[], sortBy: string) {
+function sortedcatalogBooks(catalogBooks: GeneralBook[], sortBy: string) {
   const visiblecatalogBooks = [...catalogBooks];
-  visiblecatalogBooks.sort((a: Book, b: Book) => {
+  visiblecatalogBooks.sort((a: GeneralBook, b: GeneralBook) => {
     switch (sortBy) {
       case sortOption.Newest:
         return b.publicationYear - a.publicationYear;
@@ -78,7 +78,9 @@ export const Catalog = ({
     [catalogBooks, sortBy],
   );
 
-  const [visiblecatalogBooks, setVisiblecatalogBooks] = useState<Book[]>([]);
+  const [visiblecatalogBooks, setVisiblecatalogBooks] = useState<GeneralBook[]>(
+    [],
+  );
 
   useEffect(() => {
     setVisiblecatalogBooks(sortedcatalogBooksList.slice(0, itemsCount));
