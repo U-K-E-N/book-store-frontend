@@ -11,6 +11,7 @@ import { Breadcrumbs } from '../../components/Breadcrumbs/Breadcrumbs';
 import { useLanguage } from '../../context/LanguageContext';
 import { useTranslate } from '../../context/LanguageContext';
 import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
 
 export const ItemCard = () => {
   const { data, loading, error } = useFetchAllBooks();
@@ -23,6 +24,12 @@ export const ItemCard = () => {
   const book = data.find((b) => b.slug === slug);
   const t = useTranslate();
   const { formatPrice } = useLanguage();
+
+  useEffect(() => {
+    if (book && book.lang && lang !== book.lang) {
+      setLang(book.lang as 'en' | 'uk');
+    }
+  }, [book]);
 
   if (!book) {
     return <p>Book not found</p>;
