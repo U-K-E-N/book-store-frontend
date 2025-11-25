@@ -3,6 +3,7 @@ import { BookStoreIcon, IconName } from '../BookStoreIcon';
 import './Footer.scss';
 import classNames from 'classnames';
 import { useState } from 'react';
+import logo from '../../assets/logo-header.svg';
 
 export const Footer = () => {
   const scrollToTop = () => {
@@ -30,7 +31,7 @@ export const Footer = () => {
           className="footer__logo-link"
         >
           <img
-            src="/src/assets/logo-header.svg"
+            src={logo}
             alt="Book Store Logo"
             className="footer__logo-image"
           />

@@ -10,6 +10,7 @@ import { SearchDropdown } from '../SearchDropdown';
 
 import { useStore } from '../../hooks/useStore';
 import type { GeneralBook } from '../../types/GeneralBook';
+import logo from '../../assets/logo-header.svg';
 
 interface HeaderProps {
   allBooks: GeneralBook[];
@@ -65,7 +66,7 @@ export const Header: React.FC<HeaderProps> = ({ allBooks }) => {
               className="header__logo-link"
             >
               <img
-                src="/src/assets/logo-header.svg"
+                src={logo}
                 alt="Book Store Logo"
                 className="header__logo-image"
               />
