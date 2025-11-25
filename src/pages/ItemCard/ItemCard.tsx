@@ -8,17 +8,50 @@ import { Loader } from '../../components/Loader';
 import { ImageGallery } from '../../components/ImageGallery';
 import { Breadcrumbs } from '../../components/Breadcrumbs/Breadcrumbs';
 
+import { useLanguage } from '../../context/LanguageContext';
+import { useTranslate } from '../../context/LanguageContext';
+import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
+
 export const ItemCard = () => {
   const { data, loading, error } = useFetchAllBooks();
   const { cart, favourites, addToCart, addToFavourites, removeFromFavourites } =
     useStore();
   const { slug } = useParams();
+  const { lang, setLang } = useLanguage();
+  const navigate = useNavigate();
 
   const book = data.find((b) => b.slug === slug);
+  const t = useTranslate();
+  const { formatPrice } = useLanguage();
+
+  useEffect(() => {
+    if (book && book.lang && lang !== book.lang) {
+      setLang(book.lang as 'en' | 'uk');
+    }
+  }, [book, lang, setLang]);
 
   if (!book) {
     return <p>Book not found</p>;
   }
+
+  const changeBookLang = (newLang: 'en' | 'uk') => {
+    if (!book) return;
+
+    setLang(newLang);
+
+    if (book.lang === newLang) return;
+
+    const sameBookOtherLang = data.find(
+      (b) => b.namespaceId === book.namespaceId && b.lang === newLang,
+    );
+
+    if (sameBookOtherLang) {
+      navigate(
+        `/${sameBookOtherLang.type}/${sameBookOtherLang.category}/${sameBookOtherLang.slug}`,
+      );
+    }
+  };
 
   const images = Array.isArray(book.images) ? book.images : [book.images];
 
@@ -36,12 +69,12 @@ export const ItemCard = () => {
   );
 
   const characteristics = [
-    { label: 'Author', value: book.author },
-    { label: 'Cover type', value: book.coverType },
-    { label: 'Number of pages', value: book.numberOfPages },
-    { label: 'Year of publication', value: book.publicationYear },
-    { label: 'Format', value: book.format },
-    { label: 'Language', value: book.lang },
+    { label: 'Author', value: t('author') },
+    { label: 'Cover type', value: t('coverType') },
+    { label: 'Number of pages', value: t('numberOfPages') },
+    { label: 'Year of publication', value: t('yearOfPublication') },
+    { label: 'Format', value: t('format') },
+    { label: 'Language', value: t('language') },
     {
       label: 'Illustrations',
       value: book.illustrations ? 'Illustrations' : 'No Illustrations',
@@ -72,7 +105,7 @@ export const ItemCard = () => {
 
             <div className="book__price-block">
               <div className="book__category">
-                <div className="book__label">Category</div>
+                <div className="book__label">{t('category')}</div>
 
                 <span className="book__category-value">
                   {normalizeCategory}
@@ -80,20 +113,30 @@ export const ItemCard = () => {
               </div>
 
               <div className="book__language">
-                <div className="book__label">Select language</div>
+                <div className="book__label">{t('selectLanguage')}</div>
                 <div className="book__lang-buttons">
-                  <button className="book__lang-btn">UA</button>
-                  <button className="book__lang-btn active">ENG</button>
+                  <button
+                    className={`book__lang-btn ${lang === 'uk' ? 'active' : ''}`}
+                    onClick={() => changeBookLang('uk')}
+                  >
+                    UA
+                  </button>
+
+                  <button
+                    className={`book__lang-btn ${lang === 'en' ? 'active' : ''}`}
+                    onClick={() => changeBookLang('en')}
+                  >
+                    ENG
+                  </button>
                 </div>
               </div>
-
               <div className="book__prices">
                 <span className="book__price">
-                  &#36;{book.priceDiscount || book.priceRegular}
+                  {formatPrice(book.priceDiscount || book.priceRegular)}
                 </span>
                 {book.priceDiscount && (
                   <span className="book__old-price">
-                    &#36;{book.priceRegular}
+                    {formatPrice(book.priceRegular)}
                   </span>
                 )}
               </div>
@@ -114,19 +157,21 @@ export const ItemCard = () => {
               </div>
               <ul className="book__descr-list book__descr-list--top">
                 <li className="book__descr-item">
-                  <span className="book__descr--left">Author</span>
+                  <span className="book__descr--left">{t('author')}</span>
                   <span className="book__descr--right">{book.author}</span>
                 </li>
                 {book.coverType !== null && (
                   <li className="book__descr-item">
-                    <span className="book__descr--left">Cover type</span>
+                    <span className="book__descr--left">{t('coverType')}</span>
                     <span className="book__descr--right">{book.coverType}</span>
                   </li>
                 )}
 
                 {'numberOfPages' in book && book.numberOfPages !== null && (
                   <li className="book__descr-item">
-                    <span className="book__descr--left">Number of pages</span>
+                    <span className="book__descr--left">
+                      {t('numberOfPages')}
+                    </span>
                     <span className="book__descr--right">
                       {book.numberOfPages}
                     </span>
@@ -134,7 +179,9 @@ export const ItemCard = () => {
                 )}
 
                 <li className="book__descr-item">
-                  <span className="book__descr--left">Year of publication</span>
+                  <span className="book__descr--left">
+                    {t('yearOfPublication')}
+                  </span>
                   <span className="book__descr--right">
                     {book.publicationYear}
                   </span>
@@ -145,7 +192,7 @@ export const ItemCard = () => {
 
           <div className="book__description">
             <div className="book__about">
-              <h2 className="book__description-title">About</h2>
+              <h2 className="book__description-title">{t('about')}</h2>
               {book.description.map((sentence, index) => (
                 <p
                   key={index}
@@ -156,7 +203,9 @@ export const ItemCard = () => {
               ))}
             </div>
             <div className="book__characteristics">
-              <h2 className="book__description-title">Characteristics</h2>
+              <h2 className="book__description-title">
+                {t('characteristics')}
+              </h2>
               <ul className="book__descr-list">
                 {characteristics
                   .filter(
@@ -178,12 +227,13 @@ export const ItemCard = () => {
             </div>
           </div>
         </div>
-        <ProductList
-          id="card"
-          title="You may also like"
-          books={recommended}
-        />
       </div>
+
+      <ProductList
+        id="card"
+        title={t('youMayAlsoLike')}
+        books={recommended}
+      />
     </>
   );
 };
