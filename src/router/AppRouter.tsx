@@ -9,6 +9,7 @@ import { Cart } from '../pages/Cart';
 import { NotFoundPage } from '../pages/NotFoundPage';
 import { AuthPage } from '../pages/AuthPage';
 import { ItemCard } from '../pages/ItemCard';
+import { AboutPage } from '../pages/AboutPage';
 
 export const AppRouter = () => (
   <BrowserRouter>
@@ -42,8 +43,11 @@ export const AppRouter = () => (
           element={<Cart />}
         />
         <Route
+          path="/about"
+          element={<AboutPage />}
+        />
+        <Route
           path=":type/:category/:slug"
-          // path="itemcard"
           element={<ItemCard />}
         />
         <Route
