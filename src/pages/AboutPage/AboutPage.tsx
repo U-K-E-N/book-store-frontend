@@ -37,9 +37,9 @@ export const AboutPage = () => {
         <div className="crawl-container">
           <div className="crawl">
             <p>This project was made by:</p>
-            <p>Yuliya Kulish</p>
+            <p>Yuliia Kulish</p>
             <p> Evgeniy Savin</p>
-            <p>Anastasiya Serkhovets</p>
+            <p>Anastasiia Serkhovets</p>
             <p>Karen Behlarian</p>
           </div>
         </div>

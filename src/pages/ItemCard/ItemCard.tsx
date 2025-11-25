@@ -8,17 +8,50 @@ import { Loader } from '../../components/Loader';
 import { ImageGallery } from '../../components/ImageGallery';
 import { Breadcrumbs } from '../../components/Breadcrumbs/Breadcrumbs';
 
+import { useLanguage } from '../../context/LanguageContext';
+import { useTranslate } from '../../context/LanguageContext';
+import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
+
 export const ItemCard = () => {
   const { data, loading, error } = useFetchAllBooks();
   const { cart, favourites, addToCart, addToFavourites, removeFromFavourites } =
     useStore();
   const { slug } = useParams();
+  const { lang, setLang } = useLanguage();
+  const navigate = useNavigate();
 
   const book = data.find((b) => b.slug === slug);
+  const t = useTranslate();
+  const { formatPrice } = useLanguage();
+
+  useEffect(() => {
+    if (book && book.lang && lang !== book.lang) {
+      setLang(book.lang as 'en' | 'uk');
+    }
+  }, [book]);
 
   if (!book) {
     return <p>Book not found</p>;
   }
+
+  const changeBookLang = (newLang: 'en' | 'uk') => {
+    if (!book) return;
+
+    setLang(newLang);
+
+    if (book.lang === newLang) return;
+
+    const sameBookOtherLang = data.find(
+      (b) => b.namespaceId === book.namespaceId && b.lang === newLang,
+    );
+
+    if (sameBookOtherLang) {
+      navigate(
+        `/${sameBookOtherLang.type}/${sameBookOtherLang.category}/${sameBookOtherLang.slug}`,
+      );
+    }
+  };
 
   const images = Array.isArray(book.images) ? book.images : [book.images];
 
@@ -59,7 +92,7 @@ export const ItemCard = () => {
 
             <div className="book__price-block">
               <div className="book__category">
-                <div className="book__label">Category</div>
+                <div className="book__label">{t('category')}</div>
 
                 <span className="book__category-value">
                   {normalizeCategory}
@@ -67,18 +100,30 @@ export const ItemCard = () => {
               </div>
 
               <div className="book__language">
-                <div className="book__label">Select language</div>
+                <div className="book__label">{t('selectLanguage')}</div>
                 <div className="book__lang-buttons">
-                  <button className="book__lang-btn">UA</button>
-                  <button className="book__lang-btn active">ENG</button>
+                  <button
+                    className={`book__lang-btn ${lang === 'uk' ? 'active' : ''}`}
+                    onClick={() => changeBookLang('uk')}
+                  >
+                    UA
+                  </button>
+
+                  <button
+                    className={`book__lang-btn ${lang === 'en' ? 'active' : ''}`}
+                    onClick={() => changeBookLang('en')}
+                  >
+                    ENG
+                  </button>
                 </div>
               </div>
               <span className="book__price">
-                &#36;{book.priceDiscount || book.priceRegular}
+                {formatPrice(book.priceDiscount || book.priceRegular)}
               </span>
+
               {book.priceDiscount && (
                 <span className="book__old-price">
-                  &#36;{book.priceRegular}
+                  {formatPrice(book.priceRegular)}
                 </span>
               )}
 
@@ -98,22 +143,22 @@ export const ItemCard = () => {
               </div>
               <ul className="book__description-list">
                 <li>
-                  Autor <span>{book.author}</span>
+                  {t('author')} <span>{book.author}</span>
                 </li>
                 {book.coverType !== null && (
                   <li>
-                    Cover type <span>Hardcover</span>
+                    {t('coverType')} <span>Hardcover</span>
                   </li>
                 )}
 
                 {'numberOfPages' in book && book.numberOfPages !== null && (
                   <li>
-                    Number of pages <span>{book.numberOfPages}</span>
+                    {t('numberOfPages')} <span>{book.numberOfPages}</span>
                   </li>
                 )}
 
                 <li>
-                  Year of publication <span>{book.publicationYear}</span>
+                  {t('yearOfPublication')} <span>{book.publicationYear}</span>
                 </li>
               </ul>
             </div>
@@ -121,32 +166,34 @@ export const ItemCard = () => {
 
           <div className="book__description">
             <div className="book__about">
-              <h2 className="book__about-title">About</h2>
+              <h2 className="book__about-title">{t('about')}</h2>
               <p>{book.description}</p>
             </div>
             <div className="book__characteristics">
-              <h2 className="book__characteristics-title">Characteristics</h2>
+              <h2 className="book__characteristics-title">
+                {t('characteristics')}
+              </h2>
               <ul className="book__description-list">
                 <li>
-                  Author <span>{book.author}</span>
+                  {t('author')} <span>{book.author}</span>
                 </li>
                 <li>
-                  Cover type <span>{book.coverType}</span>
+                  {t('coverType')} <span>{book.coverType}</span>
                 </li>
                 <li>
-                  Number of pages <span>{book.numberOfPages}</span>
+                  {t('numberOfPages')} <span>{book.numberOfPages}</span>
                 </li>
                 <li>
-                  Year of publication <span>{book.publicationYear}</span>
+                  {t('yearOfPublication')} <span>{book.publicationYear}</span>
                 </li>
                 <li>
-                  Format <span>{book.format}</span>
+                  {t('format')} <span>{book.format}</span>
                 </li>
                 <li>
-                  Language <span>{book.lang}</span>
+                  {t('language')} <span>{book.lang}</span>
                 </li>
                 <li>
-                  Illustrations{' '}
+                  {t('illustrations')}{' '}
                   <span>
                     {book.illustrations ? 'Illustrations' : 'No Illustrations'}
                   </span>
@@ -159,7 +206,7 @@ export const ItemCard = () => {
 
       <ProductList
         id="card"
-        title="You may also like"
+        title={t('youMayAlsoLike')}
         books={recommended}
       />
     </>
