@@ -18,7 +18,7 @@ export const ImageGallery = ({ images, book }: ImageGalleryProps) => {
   return (
     <div className="book__images">
       <img
-        src={`/books/${activeImg}`}
+        src={`${import.meta.env.BASE_URL}/books/${activeImg}`}
         alt={book.name}
         className="book__main-img"
       />
@@ -26,7 +26,7 @@ export const ImageGallery = ({ images, book }: ImageGalleryProps) => {
         {images.map((img, index) => (
           <img
             key={index}
-            src={`/books/${img}`}
+            src={`${import.meta.env.BASE_URL}/books/${img}`}
             alt="preview"
             className={classNames('book__secondary-img', {
               active: img === activeImg,

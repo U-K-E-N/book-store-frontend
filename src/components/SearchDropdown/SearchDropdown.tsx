@@ -25,7 +25,7 @@ export const SearchDropdown: React.FC<SearchDropdownProps> = ({ books }) => {
               >
                 <img
                   className="search-dropdown__image"
-                  src={`/books/${book.images[0]}`}
+                  src={`${import.meta.env.BASE_URL}books/${book.images[0]}`}
                   alt={book.name}
                 />
                 <div>

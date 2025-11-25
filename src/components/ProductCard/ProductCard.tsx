@@ -29,7 +29,7 @@ export const ProductCard = ({ book }: ProductCardProps) => {
           to={`/${book.type}/${book.category[0].toLowerCase().replace(/\s+/g, '-')}/${book.slug}`}
         >
           <img
-            src={`/books/${book.images[0]}`}
+            src={`${import.meta.env.BASE_URL}books/${book.images[0]}`}
             alt={book.name}
             className="productCard__image"
           />
