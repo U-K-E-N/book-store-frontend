@@ -6,19 +6,19 @@ export const Categories = () => {
     {
       title: 'Paper books',
       text: '107 items',
-      img: '/books/img/gif/paper.gif',
+      img: `${import.meta.env.BASE_URL}books/img/gif/paper.gif`,
       link: '/paper',
     },
     {
       title: 'Audiobooks',
       text: '35 items',
-      img: '/books/img/gif/audio.gif',
+      img: `${import.meta.env.BASE_URL}books/img/gif/audio.gif`,
       link: '/audiobook',
     },
     {
       title: 'Kindle books',
       text: '50 items',
-      img: '/books/img/gif/kindlebook.gif',
+      img: `${import.meta.env.BASE_URL}books/img/gif/kindlebook.gif`,
       link: '/kindle',
     },
   ];

@@ -32,7 +32,7 @@ export const ItemCart = ({ book, quantity }: ItemCartProps) => {
           <img
             className="item-cart__img"
             alt={book.name}
-            src={`/books/${book.images[0]}`}
+            src={`${import.meta.env.BASE_URL}books/${book.images[0]}`}
           />
         </NavLink>
         <NavLink
