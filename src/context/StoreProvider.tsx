@@ -59,6 +59,10 @@ export function StoreProvider({ children }: StoreProviderProps) {
     );
   };
 
+  const clearCart = () => {
+    setCart([]);
+  };
+
   const value = {
     cart,
     favourites,
@@ -68,6 +72,7 @@ export function StoreProvider({ children }: StoreProviderProps) {
     removeFromCart,
     increaseQuantity,
     decreaseQuantity,
+    clearCart,
   };
 
   return (

@@ -10,4 +10,5 @@ export type StoreContextType = {
   removeFromFavourites: (id: number | string) => void;
   increaseQuantity: (id: number | string) => void;
   decreaseQuantity: (id: number | string) => void;
+  clearCart: () => void;
 };
