@@ -1,6 +1,7 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import type { GeneralBook } from '../../types/GeneralBook';
 import './ImageGallery.scss';
+import classNames from 'classnames';
 
 type ImageGalleryProps = {
   images: string[];
@@ -10,8 +11,12 @@ type ImageGalleryProps = {
 export const ImageGallery = ({ images, book }: ImageGalleryProps) => {
   const [activeImg, setActiveImg] = useState(images[0]);
 
+  useEffect(() => {
+    setActiveImg(images[0]);
+  }, [images]);
+
   return (
-    <div>
+    <div className="book__images">
       <img
         src={`/books/${activeImg}`}
         alt={book.name}
@@ -23,7 +28,9 @@ export const ImageGallery = ({ images, book }: ImageGalleryProps) => {
             key={index}
             src={`/books/${img}`}
             alt="preview"
-            className="book__secondary-img"
+            className={classNames('book__secondary-img', {
+              active: img === activeImg,
+            })}
             onClick={() => setActiveImg(img)}
           />
         ))}

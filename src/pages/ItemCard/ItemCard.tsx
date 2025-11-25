@@ -29,7 +29,7 @@ export const ItemCard = () => {
     if (book && book.lang && lang !== book.lang) {
       setLang(book.lang as 'en' | 'uk');
     }
-  }, [book]);
+  }, [book, lang, setLang]);
 
   if (!book) {
     return <p>Book not found</p>;
@@ -68,6 +68,19 @@ export const ItemCard = () => {
       item.category.some((cat) => book.category.includes(cat)),
   );
 
+  const characteristics = [
+    { label: 'Author', value: t('author') },
+    { label: 'Cover type', value: t('coverType') },
+    { label: 'Number of pages', value: t('numberOfPages') },
+    { label: 'Year of publication', value: t('yearOfPublication') },
+    { label: 'Format', value: t('format') },
+    { label: 'Language', value: t('language') },
+    {
+      label: 'Illustrations',
+      value: book.illustrations ? 'Illustrations' : 'No Illustrations',
+    },
+  ];
+
   if (loading) {
     return <Loader />;
   }
@@ -78,8 +91,8 @@ export const ItemCard = () => {
 
   return (
     <>
-      <section className="book">
-        <div className="container">
+      <div className="book">
+        <div className="container book__container">
           <Breadcrumbs book={book} />
 
           <h1 className="book__title">{book.name}</h1>
@@ -117,15 +130,16 @@ export const ItemCard = () => {
                   </button>
                 </div>
               </div>
-              <span className="book__price">
-                {formatPrice(book.priceDiscount || book.priceRegular)}
-              </span>
-
-              {book.priceDiscount && (
-                <span className="book__old-price">
-                  {formatPrice(book.priceRegular)}
+              <div className="book__prices">
+                <span className="book__price">
+                  {formatPrice(book.priceDiscount || book.priceRegular)}
                 </span>
-              )}
+                {book.priceDiscount && (
+                  <span className="book__old-price">
+                    {formatPrice(book.priceRegular)}
+                  </span>
+                )}
+              </div>
 
               <div className="book__cart-buttons">
                 <AddToCartButton
@@ -141,24 +155,36 @@ export const ItemCard = () => {
                   }
                 />
               </div>
-              <ul className="book__description-list">
-                <li>
-                  {t('author')} <span>{book.author}</span>
+              <ul className="book__descr-list book__descr-list--top">
+                <li className="book__descr-item">
+                  <span className="book__descr--left">{t('author')}</span>
+                  <span className="book__descr--right">{book.author}</span>
                 </li>
                 {book.coverType !== null && (
-                  <li>
-                    {t('coverType')} <span>Hardcover</span>
+                  <li className="book__descr-item">
+                    <span className="book__descr--left">{t('coverType')}</span>
+                    <span className="book__descr--right">{book.coverType}</span>
                   </li>
                 )}
 
                 {'numberOfPages' in book && book.numberOfPages !== null && (
-                  <li>
-                    {t('numberOfPages')} <span>{book.numberOfPages}</span>
+                  <li className="book__descr-item">
+                    <span className="book__descr--left">
+                      {t('numberOfPages')}
+                    </span>
+                    <span className="book__descr--right">
+                      {book.numberOfPages}
+                    </span>
                   </li>
                 )}
 
-                <li>
-                  {t('yearOfPublication')} <span>{book.publicationYear}</span>
+                <li className="book__descr-item">
+                  <span className="book__descr--left">
+                    {t('yearOfPublication')}
+                  </span>
+                  <span className="book__descr--right">
+                    {book.publicationYear}
+                  </span>
                 </li>
               </ul>
             </div>
@@ -166,43 +192,42 @@ export const ItemCard = () => {
 
           <div className="book__description">
             <div className="book__about">
-              <h2 className="book__about-title">{t('about')}</h2>
-              <p>{book.description}</p>
+              <h2 className="book__description-title">{t('about')}</h2>
+              {book.description.map((sentence, index) => (
+                <p
+                  key={index}
+                  className="book__about-descr"
+                >
+                  {sentence}
+                </p>
+              ))}
             </div>
             <div className="book__characteristics">
-              <h2 className="book__characteristics-title">
+              <h2 className="book__description-title">
                 {t('characteristics')}
               </h2>
-              <ul className="book__description-list">
-                <li>
-                  {t('author')} <span>{book.author}</span>
-                </li>
-                <li>
-                  {t('coverType')} <span>{book.coverType}</span>
-                </li>
-                <li>
-                  {t('numberOfPages')} <span>{book.numberOfPages}</span>
-                </li>
-                <li>
-                  {t('yearOfPublication')} <span>{book.publicationYear}</span>
-                </li>
-                <li>
-                  {t('format')} <span>{book.format}</span>
-                </li>
-                <li>
-                  {t('language')} <span>{book.lang}</span>
-                </li>
-                <li>
-                  {t('illustrations')}{' '}
-                  <span>
-                    {book.illustrations ? 'Illustrations' : 'No Illustrations'}
-                  </span>
-                </li>
+              <ul className="book__descr-list">
+                {characteristics
+                  .filter(
+                    (item) =>
+                      item.value !== undefined &&
+                      item.value !== null &&
+                      item.value !== '',
+                  )
+                  .map((item, index) => (
+                    <li
+                      key={index}
+                      className="book__descr-item"
+                    >
+                      <span className="book__descr--left">{item.label}</span>
+                      <span className="book__descr--right">{item.value}</span>
+                    </li>
+                  ))}
               </ul>
             </div>
           </div>
         </div>
-      </section>
+      </div>
 
       <ProductList
         id="card"

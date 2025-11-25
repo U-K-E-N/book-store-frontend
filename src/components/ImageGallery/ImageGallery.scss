@@ -2,21 +2,31 @@
 @import '../../styles/vars.css';
 
 .book {
+  &__images {
+    margin-bottom: 32px;
+
+    @include on-tablet {
+      display: flex;
+      flex-direction: row-reverse;
+      gap: 24px;
+    }
+  }
+
   &__main-img {
     width: 278px;
     height: 278px;
-    margin-bottom: 40px;
-    border-radius: var(--radius-sm);
-    border: 1px solid var(--color-elements);
+    margin-bottom: 41px;
+    border-radius: 10px;
+
+    object-fit: contain;
 
     @include on-tablet {
-      //   grid-column: 4 / 6;
       width: 205px;
-      height: 315px;
+      height: 316px;
+      object-fit: cover;
     }
 
     @include on-desktop {
-      //   grid-column: 3 / 10;
       width: 337px;
       height: 520px;
     }
@@ -24,25 +34,30 @@
 
   &__img-thumb {
     display: flex;
-    gap: var(--space-xs);
-    margin-bottom: var(--space-xl);
-    overflow: scroll;
+    gap: 8px;
+
+    overflow-x: scroll;
 
     @include on-tablet {
-      //   position: absolute;
-      top: 0;
       flex-direction: column;
-      grid-column: 1 / 2;
       overflow: visible;
     }
   }
 
   &__secondary-img {
+    min-width: 64px;
     width: 64px;
     height: 64px;
+    object-fit: contain;
 
-    border-radius: var(--radius-sm);
-    border: 1px solid var(--color-elements);
+    border: 1px solid #e2e6e9;
+    border-radius: 4px;
+    padding: 8px;
+    background-color: var(--color-white);
+
+    &.active {
+      border: 1px solid var(--color-primary);
+    }
 
     @include on-desktop {
       width: 80px;
