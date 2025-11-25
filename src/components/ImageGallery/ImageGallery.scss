@@ -23,7 +23,6 @@
     @include on-tablet {
       width: 205px;
       height: 316px;
-      object-fit: cover;
     }
 
     @include on-desktop {
