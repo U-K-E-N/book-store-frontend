@@ -20,7 +20,7 @@ export const SearchDropdown: React.FC<SearchDropdownProps> = ({ books }) => {
               key={book.id}
             >
               <Link
-                to={'/'}
+                to={`/${book.type}/${book.category[0].toLowerCase().replace(/\s+/g, '-')}/${book.slug}`}
                 className="search-dropdown__link"
               >
                 <img

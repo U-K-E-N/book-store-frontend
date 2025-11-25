@@ -1,0 +1,36 @@
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+
+  a {
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  .breadcrumbs__dots {
+    display: none;
+  }
+
+  @media (max-width: 639px) {
+    a:nth-of-type(2) {
+      display: none;
+    }
+
+    a:nth-of-type(3) {
+      display: none;
+    }
+
+    span:nth-of-type(2) {
+      display: none;
+    }
+
+    .breadcrumbs__dots {
+      display: inline;
+    }
+  }
+}

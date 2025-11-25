@@ -1,8 +1,8 @@
 import { type ReactNode } from 'react';
-import type { Book } from '../types/Book';
 import type { CartItem } from '../types/CartItem';
 import { useLocalStorage } from '../hooks/useLocalStorage';
 import { StoreContext } from './StoreContext';
+import type { GeneralBook } from '../types/GeneralBook';
 
 type StoreProviderProps = {
   children: ReactNode;
@@ -10,9 +10,12 @@ type StoreProviderProps = {
 
 export function StoreProvider({ children }: StoreProviderProps) {
   const [cart, setCart] = useLocalStorage<CartItem[]>('cart', []);
-  const [favourites, setFavourites] = useLocalStorage<Book[]>('favourites', []);
+  const [favourites, setFavourites] = useLocalStorage<GeneralBook[]>(
+    'favourites',
+    [],
+  );
 
-  const addToFavourites = (book: Book) => {
+  const addToFavourites = (book: GeneralBook) => {
     setFavourites((prev) => {
       if (!prev.some((item) => item.id === book.id)) {
         return [...prev, book];
@@ -25,7 +28,7 @@ export function StoreProvider({ children }: StoreProviderProps) {
     setFavourites((prev) => prev.filter((item) => item.id !== id));
   };
 
-  const addToCart = (book: Book) => {
+  const addToCart = (book: GeneralBook) => {
     setCart((prev) => {
       if (!prev.some((item) => item.book.id === book.id)) {
         return [...prev, { book, quantity: 1 }];

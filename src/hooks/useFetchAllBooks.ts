@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
-import type { Book } from '../types/Book';
+import type { GeneralBook } from '../types/GeneralBook';
 
 export function useFetchAllBooks() {
-  const [data, setData] = useState<Book[]>([]);
+  const [data, setData] = useState<GeneralBook[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<Error | null>(null);
 

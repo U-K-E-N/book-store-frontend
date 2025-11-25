@@ -8,6 +8,7 @@ import { Favourites } from '../pages/Favourites';
 import { Cart } from '../pages/Cart';
 import { NotFoundPage } from '../pages/NotFoundPage';
 import { AuthPage } from '../pages/AuthPage';
+import { ItemCard } from '../pages/ItemCard';
 
 export const AppRouter = () => (
   <BrowserRouter>
@@ -39,6 +40,11 @@ export const AppRouter = () => (
         <Route
           path="cart"
           element={<Cart />}
+        />
+        <Route
+          path=":type/:category/:slug"
+          // path="itemcard"
+          element={<ItemCard />}
         />
         <Route
           path="*"
