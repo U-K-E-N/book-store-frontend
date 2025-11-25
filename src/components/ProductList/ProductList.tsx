@@ -7,13 +7,13 @@ import 'swiper/css/navigation';
 import './ProductList.scss';
 
 import { BookStoreIcon, IconName } from '../BookStoreIcon';
-import type { Book } from '../../types/Book';
 import { ProductCard } from '../ProductCard';
+import type { GeneralBook } from '../../types/GeneralBook';
 
 type ProductListProps = {
   id: string;
   title: string;
-  books: Book[];
+  books: GeneralBook[];
 };
 
 export const ProductList = ({ id, title, books }: ProductListProps) => {

@@ -8,6 +8,7 @@ import { Favourites } from '../pages/Favourites';
 import { Cart } from '../pages/Cart';
 import { NotFoundPage } from '../pages/NotFoundPage';
 import { AuthPage } from '../pages/AuthPage';
+import { ItemCard } from '../pages/ItemCard';
 import { AboutPage } from '../pages/AboutPage';
 
 export const AppRouter = () => (
@@ -44,6 +45,10 @@ export const AppRouter = () => (
         <Route
           path="/about"
           element={<AboutPage />}
+        />
+        <Route
+          path=":type/:category/:slug"
+          element={<ItemCard />}
         />
         <Route
           path="*"

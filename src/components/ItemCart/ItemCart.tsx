@@ -1,13 +1,13 @@
 import classNames from 'classnames';
 import { useStore } from '../../hooks/useStore';
-import type { Book } from '../../types/Book';
 import { BookStoreIcon, IconName } from '../BookStoreIcon';
 
 import './ItemCart.scss';
 import { NavLink } from 'react-router-dom';
+import type { GeneralBook } from '../../types/GeneralBook';
 
 type ItemCartProps = {
-  book: Book;
+  book: GeneralBook;
   quantity: number;
 };
 
@@ -26,7 +26,9 @@ export const ItemCart = ({ book, quantity }: ItemCartProps) => {
           <BookStoreIcon iconName={IconName.Close} />
         </button>
 
-        <NavLink to="/">
+        <NavLink
+          to={`/${book.type}/${book.category[0].toLowerCase().replace(/\s+/g, '-')}/${book.slug}`}
+        >
           <img
             className="item-cart__img"
             alt={book.name}
@@ -34,7 +36,7 @@ export const ItemCart = ({ book, quantity }: ItemCartProps) => {
           />
         </NavLink>
         <NavLink
-          to="/"
+          to={`/${book.type}/${book.category[0].toLowerCase().replace(/\s+/g, '-')}/${book.slug}`}
           className="item-cart__descr"
         >
           <h3 className="item-cart__name">{book.name}</h3>
