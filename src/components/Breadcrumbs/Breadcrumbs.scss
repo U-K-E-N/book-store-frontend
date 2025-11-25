@@ -1,36 +1,60 @@
+@use '../../styles/utils/mixins' as *;
+
 .breadcrumbs {
   display: flex;
   align-items: center;
-  gap: 8px;
-  font-size: 14px;
+  gap: 4px;
+  margin-bottom: 16px;
 
-  a {
-    text-decoration: none;
+  @include on-tablet {
+    margin-bottom: 24px;
+  }
 
-    &:hover {
-      text-decoration: underline;
+  &__link {
+    font-weight: 700;
+    font-size: 12px;
+
+    text-transform: uppercase;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    &:not(:last-child) {
+      display: none;
+
+      @include on-tablet {
+        display: inline;
+      }
+    }
+
+    &--type {
+      overflow: visible;
+      text-overflow: initial;
+    }
+
+    &--title {
+      letter-spacing: 0.01em;
+      color: #89939a;
     }
   }
 
-  .breadcrumbs__dots {
-    display: none;
+  &__arrow {
+    color: #89939a;
+
+    &--tablet {
+      display: none;
+
+      @include on-tablet {
+        display: block;
+      }
+    }
   }
 
-  @media (max-width: 639px) {
-    a:nth-of-type(2) {
-      display: none;
-    }
+  &__dots {
+    display: inline;
 
-    a:nth-of-type(3) {
+    @include on-tablet {
       display: none;
-    }
-
-    span:nth-of-type(2) {
-      display: none;
-    }
-
-    .breadcrumbs__dots {
-      display: inline;
     }
   }
 }

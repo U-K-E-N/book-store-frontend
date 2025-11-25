@@ -6,13 +6,13 @@ import { BookStoreIcon, IconName } from '../BookStoreIcon';
 import { Dropdown } from '../Dropdown';
 import { MobileMenu } from './MobileMenu';
 
-import type { BookBase } from '../../types/BookBase';
 import { SearchDropdown } from '../SearchDropdown';
 
 import { useStore } from '../../hooks/useStore';
+import type { GeneralBook } from '../../types/GeneralBook';
 
 interface HeaderProps {
-  allBooks: BookBase[];
+  allBooks: GeneralBook[];
 }
 
 export const Header: React.FC<HeaderProps> = ({ allBooks }) => {

@@ -2,18 +2,28 @@
 @use '../../styles/vars.css';
 
 .book {
-  margin-top: -40px;
+  margin-top: -10px;
 
-  &__title {
-    color: var(--color-primary);
-    font-size: var(--h3-size);
-    font-weight: var(--fw-bold);
-    line-height: var(--h3-line-height);
+  &__container {
+    margin-bottom: 56px;
 
     @include on-tablet {
-      font-size: var(--h2-size);
-      line-height: var(--h2-line-height);
-      letter-spacing: -1%;
+      margin-bottom: 80px;
+    }
+  }
+
+  &__title {
+    font-weight: 700;
+    font-size: 22px;
+
+    line-height: 31px;
+    margin-bottom: 6px;
+
+    @include on-tablet {
+      font-size: 32px;
+
+      line-height: 41px;
+      letter-spacing: -0.01em;
     }
 
     @include on-desktop {
@@ -21,74 +31,70 @@
   }
 
   &__author {
-    font-size: var(--body1-size);
-    line-height: var(--body1-line-height);
-    color: var(--color-secondary);
+    font-weight: 500;
+    font-size: 14px;
+
+    line-height: 21px;
+    opacity: 0.6;
+    margin-bottom: 16px;
 
     @include on-tablet {
-      padding-bottom: var(--space-xl);
+      margin-bottom: 32px;
     }
   }
 
   &__card {
     @include on-tablet {
-      @include page-grid;
-      position: relative;
+      display: flex;
+      gap: 32px;
     }
-  }
-
-  &__price-block {
-    margin-bottom: var(--space-xl);
-
-    @include on-tablet {
-      grid-column: 6 / -1;
-      margin-bottom: 40px;
-    }
-
     @include on-desktop {
-      grid-column: 14 / 20;
+      gap: 175px;
     }
   }
 
   &__category {
-    border-bottom: 1px solid var(--color-elements);
-    margin-bottom: var(--space-md);
+    padding-bottom: 16px;
+    border-bottom: 1px solid #e2e6e9;
   }
 
   &__label {
-    color: var(--color-secondary);
-    font-size: var(--body1-size);
-    line-height: var(--body1-line-height);
-    font-weight: 600;
-    display: block;
-    margin-bottom: var(--space-xs);
+    font-weight: 700;
+    font-size: 16px;
+
+    line-height: 24px;
+    color: #89939a;
+    margin-bottom: 8px;
   }
 
   &__category-value {
-    width: min-content;
     display: inline-block;
-    margin-bottom: var(--space-md);
-    padding: 8px 14px;
-    border: 1px solid var(--color-elements);
+    border: 1px solid #e2e6e9;
     border-radius: 5px;
+    padding: 5px 10px;
+    line-height: 21px;
+  }
+
+  &__language {
+    border-bottom: 1px solid #e2e6e9;
+    padding-block: 16px;
+    margin-bottom: 16px;
   }
 
   &__lang-buttons {
     display: flex;
     gap: 10px;
-    border-bottom: 1px solid var(--color-elements);
-    margin-bottom: var(--space-md);
   }
 
   &__lang-btn {
-    margin-bottom: var(--space-md);
-    padding: 8px 16px;
-    border-radius: var(--radius-sm);
-    font-size: var(--button-size);
-    line-height: var(--button-line-height);
-    border: 1px solid var(--color-elements);
-    color: var(--color-primary);
-    transition: 0.2s ease;
+    border: 1px solid #e2e6e9;
+    border-radius: 5px;
+    padding: 5px 10px;
+    transition: all 0.2s ease;
+    font-weight: 500;
+    font-size: 14px;
+
+    line-height: 21px;
 
     &.active {
       background: var(--color-primary);
@@ -101,114 +107,118 @@
     }
   }
 
-  &__price {
-    display: inline-block;
-    margin-right: var(--space-xs);
-    margin-bottom: var(--space-md);
-    font-size: var(--h3-size);
-    line-height: var(--h3-line-height);
-    font-weight: bold;
+  &__prices {
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
 
-    @include on-desktop {
-      font-size: var(--h2-size);
-      line-height: var(--h2-line-height);
+  &__price {
+    font-weight: 700;
+    font-size: 22px;
+
+    line-height: 31px;
+
+    @include on-tablet {
+      font-size: 32px;
     }
   }
 
   &__old-price {
-    display: inline-block;
-    margin-bottom: 16px;
-    font-size: var(--h4-size);
-    font-weight: bold;
+    font-weight: 600;
+    font-size: 20px;
     text-decoration: line-through;
-    text-align: center;
     color: var(--color-secondary);
 
-    @include on-desktop {
-      font-size: var(--h3-size);
-      line-height: var(--h3-line-height);
+    @include on-tablet {
+      font-size: 22px;
     }
   }
 
   &__cart-buttons {
-    width: 100%;
     display: flex;
-    gap: var(--space-xs);
-    margin-bottom: var(--space-lg);
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 24px;
+
+    @include on-tablet {
+      justify-content: flex-start;
+    }
   }
 
-  &__description-list {
-    margin-bottom: var(--space-lg);
+  &__descr-list--top {
+    margin-bottom: 32px;
+  }
 
-    li {
-      display: flex;
-      justify-content: space-between;
-      padding: 6px 0;
-      color: var(--color-secondary);
-      font-family: Manrope;
-      font-weight: 500;
-      font-size: var(--button-size);
-      line-height: var(--button-line-height);
+  &__descr-item {
+    display: flex;
+    justify-content: space-between;
+    padding-block: 6px;
+    border-bottom: 1px solid #e2e6e9;
 
-      strong {
-        color: var(--color-primary);
-      }
-
-      &:not(:last-child) {
-        border-bottom: 1px solid var(--color-elements);
-      }
+    &:first-child {
+      padding-top: 0;
     }
+
+    &:last-child {
+      padding-bottom: 0;
+      border: 0;
+    }
+  }
+
+  &__descr--left {
+    font-weight: 500;
+    font-size: 14px;
+
+    line-height: 21px;
+    color: #89939a;
+  }
+
+  &__descr--right {
+    font-weight: 500;
+    font-size: 14px;
+
+    line-height: 21px;
   }
 
   &__description {
     @include on-desktop {
-      @include page-grid;
+      display: flex;
+      gap: 64px;
     }
   }
 
   &__about {
-    margin-bottom: var(--space-xl);
-    font-family: Manrope;
-    font-weight: 500;
-    font-size: var(--button-size);
-    line-height: var(--button-line-height);
+    margin-bottom: 32px;
 
     @include on-tablet {
       margin-bottom: 40px;
-      font-size: var(--body1-size);
-      line-height: var(--body1-line-height);
     }
 
     @include on-desktop {
-      grid-column: 1 / 12;
+      max-width: 560px;
     }
+  }
 
-    &-title {
-      margin-bottom: var(--space-lg);
-      font-weight: var(fw-semibold);
-      font-size: var(--h4-size);
-      line-height: var(--h4-line-heigh);
+  &__description-title {
+    font-weight: 600;
+    font-size: 20px;
+    padding-bottom: 16px;
+    margin-bottom: 24px;
+    border-bottom: 1px solid #e2e6e9;
+  }
 
-      @include on-tablet {
-        font-size: var(--h3-size);
-        line-height: var(--h3-line-heigh);
-      }
+  &__about-descr {
+    &:not(:last-child) {
+      margin-bottom: 16px;
     }
   }
 
   &__characteristics {
-    margin-bottom: 56px;
-
-    @include on-tablet {
-      margin-bottom: 80px;
-    }
-
     @include on-desktop {
-      grid-column: 14 / -1;
-    }
-
-    &-title {
-      margin-bottom: var(--space-lg);
+      width: 100%;
     }
   }
 }
