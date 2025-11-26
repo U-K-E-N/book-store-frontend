@@ -214,8 +214,9 @@ export const Catalog = ({
             label="Items on page"
             variant="number"
             options={[
+              { label: '8', value: 8 },
               { label: '16', value: 16 },
-              { label: '6', value: 6 },
+              { label: '24', value: 24 },
               { label: '30', value: 30 },
             ]}
             dropdownText={itemsCount.toString()}
