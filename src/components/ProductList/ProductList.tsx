@@ -39,11 +39,12 @@ export const ProductList = ({ id, title, books }: ProductListProps) => {
               prevEl: `.custom-prev--${id}`,
             }}
             spaceBetween={16}
-            slidesPerView="auto"
+            slidesPerView={1.2}
             slidesPerGroup={1}
             grabCursor={true}
             breakpoints={{
               640: {
+                slidesPerView: 2,
                 slidesPerGroup: 2,
               },
               1200: {
