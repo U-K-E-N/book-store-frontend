@@ -40,7 +40,6 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({
               src={logo}
               alt="Book Store Logo"
               className="mobile-menu__logo-image"
-              onClick={onClose}
             />
           </NavLink>
         </div>
