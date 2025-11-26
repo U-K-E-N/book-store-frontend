@@ -107,8 +107,8 @@
   .swiper-pagination-bullet {
     width: 14px;
     height: 4px;
-    background: var(--color-icons); /* серый для неактивных */
-    border-radius: 2px; /* чуть скруглённые углы */
+    background: var(--color-icons);
+    border-radius: 2px;
     opacity: 1;
   }
 
@@ -116,7 +116,7 @@
     width: 14px;
     height: 4px;
     border-radius: 2px;
-    background: var(--color-primary); /* цвет активной */
+    background: var(--color-primary);
   }
 }
 

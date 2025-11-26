@@ -10,6 +10,7 @@ import { NotFoundPage } from '../pages/NotFoundPage';
 import { AuthPage } from '../pages/AuthPage';
 import { ItemCard } from '../pages/ItemCard';
 import { AboutPage } from '../pages/AboutPage';
+import { CategoryPage } from '../pages/CategotyPage';
 
 export const AppRouter = () => (
   <HashRouter>
@@ -45,6 +46,10 @@ export const AppRouter = () => (
         <Route
           path="about"
           element={<AboutPage />}
+        />
+        <Route
+          path="books/:category"
+          element={<CategoryPage />}
         />
         <Route
           path=":type/:category/:slug"

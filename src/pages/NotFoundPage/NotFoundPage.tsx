@@ -5,7 +5,7 @@ export const NotFoundPage = () => {
   return (
     <div className="not-found">
       <img
-        src="/books/img/page-not-found.webp"
+        src={`${import.meta.env.BASE_URL}books/img/page-not-found.webp`}
         alt="404"
         className="not-found__image"
       />

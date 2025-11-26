@@ -1,0 +1,17 @@
+export const categoryOptions = [
+  { label: 'Programming', value: 'programming' },
+  { label: 'Graphic Design', value: 'graphic-design' },
+  { label: 'Fantasy', value: 'fantasy' },
+  { label: 'Romantic fantasy', value: 'romantic-fantasy' },
+  { label: 'Web Browsers', value: 'web-browsers' },
+  { label: 'Design & Decor', value: 'design-decor' },
+  { label: 'Dystopian', value: 'dystopian' },
+  { label: 'Translated works', value: 'translated-works' },
+  { label: 'Psychology', value: 'psychology' },
+  { label: 'Romance', value: 'romance' },
+  { label: 'Fiction', value: 'fiction' },
+  { label: 'Algorithms', value: 'algorithms' },
+  { label: 'Drama', value: 'drama' },
+  { label: 'Horror', value: 'horror' },
+  { label: 'Young adult', value: 'young-adult' },
+];
