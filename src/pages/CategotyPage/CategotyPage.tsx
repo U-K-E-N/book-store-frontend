@@ -37,16 +37,20 @@ export const CategoryPage = () => {
   const category = categoryFromPath || 'all';
 
   const filteredBooks = useMemo(() => {
-    if (category === 'all') return allBooks;
+    if (category === 'all') {
+      return allBooks.filter((book) => book.lang === 'uk');
+    }
 
-    return allBooks.filter((book) => {
-      const firstCategory = book.category?.[0] ?? '';
-      const normalizedCategory = firstCategory
-        .toLowerCase()
-        .replace(/[^a-z0-9]+/g, '-');
+    return allBooks
+      .filter((book) => {
+        const firstCategory = book.category?.[0] ?? '';
+        const normalizedCategory = firstCategory
+          .toLowerCase()
+          .replace(/[^a-z0-9]+/g, '-');
 
-      return normalizedCategory === category;
-    });
+        return normalizedCategory === category;
+      })
+      .filter((book) => book.lang === 'uk');
   }, [allBooks, category]);
 
   return (

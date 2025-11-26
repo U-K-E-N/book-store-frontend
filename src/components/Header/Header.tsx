@@ -40,6 +40,12 @@ export const Header: React.FC<HeaderProps> = ({ allBooks }) => {
 
   const navigate = useNavigate();
 
+  const getCategoryLabel = (val: string | number | null) => {
+    if (!val) return 'Category';
+    const found = categoryOptions.find((o) => o.value === String(val));
+    return found ? found.label : String(val);
+  };
+
   const handleSelect = (value: string) => {
     searchParams.set('category', value.toLowerCase());
     setSearchParams(searchParams);
@@ -149,7 +155,7 @@ export const Header: React.FC<HeaderProps> = ({ allBooks }) => {
               <Dropdown
                 //sort, number, category
                 variant="category"
-                dropdownText={selectedCategory}
+                dropdownText={getCategoryLabel(selectedCategory)}
                 options={categoryOptions}
                 onSelect={(val) => {
                   setSelectedCategory(val.toString());
