@@ -38,7 +38,7 @@ export const AboutPage = () => {
           <div className="crawl">
             <p>This project was made by:</p>
             <p>Yuliia Kulish</p>
-            <p> Evgeniy Savin</p>
+            <p> Evgen Savin</p>
             <p>Anastasiia Serkhovets</p>
             <p>Karen Behlarian</p>
           </div>
