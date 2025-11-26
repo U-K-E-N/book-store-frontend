@@ -8,11 +8,13 @@ export const Layout = () => {
 
   return (
     <>
-      <Header allBooks={data} />
-      <main className="main">
-        <Outlet />
-      </main>
-      <Footer />
+      <div className="site">
+        <Header allBooks={data} />
+        <main className="main">
+          <Outlet />
+        </main>
+        <Footer />
+      </div>
     </>
   );
 };
