@@ -1,6 +1,6 @@
-import type { Book } from './Book';
+import type { GeneralBook } from './GeneralBook';
 
 export type CartItem = {
-  book: Book;
+  book: GeneralBook;
   quantity: number;
 };

@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Routes, Route, HashRouter } from 'react-router-dom';
 import { Layout } from '../pages/Layout';
 import { Home } from '../pages/Home';
 import { Paper } from '../pages/Paper';
@@ -8,9 +8,12 @@ import { Favourites } from '../pages/Favourites';
 import { Cart } from '../pages/Cart';
 import { NotFoundPage } from '../pages/NotFoundPage';
 import { AuthPage } from '../pages/AuthPage';
+import { ItemCard } from '../pages/ItemCard';
+import { AboutPage } from '../pages/AboutPage';
+import { CategoryPage } from '../pages/CategotyPage';
 
 export const AppRouter = () => (
-  <BrowserRouter>
+  <HashRouter>
     <Routes>
       <Route
         path="/"
@@ -41,6 +44,18 @@ export const AppRouter = () => (
           element={<Cart />}
         />
         <Route
+          path="about"
+          element={<AboutPage />}
+        />
+        <Route
+          path="books/:category"
+          element={<CategoryPage />}
+        />
+        <Route
+          path=":type/:category/:slug"
+          element={<ItemCard />}
+        />
+        <Route
           path="*"
           element={<NotFoundPage />}
         />
@@ -51,5 +66,5 @@ export const AppRouter = () => (
         element={<AuthPage />}
       />
     </Routes>
-  </BrowserRouter>
+  </HashRouter>
 );

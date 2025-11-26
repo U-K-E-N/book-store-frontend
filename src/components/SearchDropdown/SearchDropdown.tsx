@@ -2,6 +2,7 @@
 import { Link } from 'react-router-dom';
 import type { BookBase } from '../../types/BookBase';
 import './SearchDropdown.scss';
+import { normalizeCategory } from '../../utils/normalizeCategory';
 
 interface SearchDropdownProps {
   books: BookBase[];
@@ -20,12 +21,12 @@ export const SearchDropdown: React.FC<SearchDropdownProps> = ({ books }) => {
               key={book.id}
             >
               <Link
-                to={'/'}
+                to={`/${book.type}/${normalizeCategory(book.category[0])}/${book.slug}`}
                 className="search-dropdown__link"
               >
                 <img
                   className="search-dropdown__image"
-                  src={`/books/${book.images[0]}`}
+                  src={`${import.meta.env.BASE_URL}books/${book.images[0]}`}
                   alt={book.name}
                 />
                 <div>

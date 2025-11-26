@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
 import type { Book } from '../types/Book';
+import type { GeneralBook } from '../types/GeneralBook';
 
 export function useFetchBooks(fileName: string) {
-  const [data, setData] = useState<Book[]>([]);
+  const [data, setData] = useState<GeneralBook[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<Error | null>(null);
 
@@ -13,7 +14,9 @@ export function useFetchBooks(fileName: string) {
       try {
         setLoading(true);
 
-        const res = await fetch(`/books/${fileName}.json`);
+        const res = await fetch(
+          `${import.meta.env.BASE_URL}books/${fileName}.json`,
+        );
 
         if (!res.ok) {
           throw new Error(`Failed to load ${fileName} books`);

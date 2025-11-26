@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
-import type { Book } from '../types/Book';
+import type { GeneralBook } from '../types/GeneralBook';
 
 export function useFetchAllBooks() {
-  const [data, setData] = useState<Book[]>([]);
+  const [data, setData] = useState<GeneralBook[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<Error | null>(null);
 
@@ -14,9 +14,9 @@ export function useFetchAllBooks() {
         setLoading(true);
 
         const [audioRes, kindleRes, paperRes] = await Promise.all([
-          fetch('/books/audiobook.json'),
-          fetch('/books/kindle.json'),
-          fetch('/books/paperback.json'),
+          fetch(`${import.meta.env.BASE_URL}books/audiobook.json`),
+          fetch(`${import.meta.env.BASE_URL}books/kindle.json`),
+          fetch(`${import.meta.env.BASE_URL}books/paperback.json`),
         ]);
 
         if (!audioRes.ok || !kindleRes.ok || !paperRes.ok) {

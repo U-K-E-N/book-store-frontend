@@ -1,23 +1,18 @@
 import './ProductCard.scss';
-import type { Book } from '../../types/Book';
 import { BookStoreIcon, IconName } from '../BookStoreIcon';
 import { AddToCartButton, FavoriteButton } from '../Buttons';
 import { useStore } from '../../hooks/useStore';
 import { NavLink } from 'react-router-dom';
+import type { GeneralBook } from '../../types/GeneralBook';
+import { normalizeCategory } from '../../utils/normalizeCategory';
 
 type ProductCardProps = {
-  book: Book;
+  book: GeneralBook;
 };
 
 export const ProductCard = ({ book }: ProductCardProps) => {
-  const {
-    cart,
-    favourites,
-    addToFavourites,
-    removeFromFavourites,
-    addToCart,
-    removeFromCart,
-  } = useStore();
+  const { cart, favourites, addToFavourites, removeFromFavourites, addToCart } =
+    useStore();
 
   const inCart = cart.some((item) => item.book.id === book.id);
   const inFav = favourites.some((item) => item.id === book.id);
@@ -31,9 +26,11 @@ export const ProductCard = ({ book }: ProductCardProps) => {
       )}
 
       <div className="productCard__imageWrapper">
-        <NavLink to="/">
+        <NavLink
+          to={`/${book.type}/${normalizeCategory(book.category[0])}/${book.slug}`}
+        >
           <img
-            src={`/books/${book.images[0]}`}
+            src={`${import.meta.env.BASE_URL}books/${book.images[0]}`}
             alt={book.name}
             className="productCard__image"
           />
@@ -42,7 +39,7 @@ export const ProductCard = ({ book }: ProductCardProps) => {
 
       <div className="productCard__content">
         <NavLink
-          to="/"
+          to={`/${book.type}/${normalizeCategory(book.category[0])}/${book.slug}`}
           className="productCard__content-wrapper"
         >
           <h3 className="productCard__name">{book.name}</h3>
@@ -63,15 +60,12 @@ export const ProductCard = ({ book }: ProductCardProps) => {
         <div className="productCard__stock">
           <BookStoreIcon iconName={IconName.Car} />
           <span className="productCard__stock-text">In stock</span>
-          {/* {inStock ? 'In stock' : 'Out of stock'} */}
         </div>
 
         <div className="productCard__actions">
           <AddToCartButton
             selected={inCart}
-            onSelect={() =>
-              inCart ? removeFromCart(book.id) : addToCart(book)
-            }
+            onSelect={() => addToCart(book)}
           />
           <FavoriteButton
             selected={inFav}

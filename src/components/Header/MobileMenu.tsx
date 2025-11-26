@@ -1,12 +1,12 @@
 import { NavLink } from 'react-router-dom';
 import { BookStoreIcon, IconName } from '../BookStoreIcon';
 import { Input } from '../Input';
-// import { Dropdown } from '../Dropdown';
 import './MobileMenu.scss';
 import React, { useState } from 'react';
 import { useStore } from '../../hooks/useStore';
 import { SearchDropdown } from '../SearchDropdown';
 import type { BookBase } from '../../types/BookBase';
+import logo from '../../assets/logo-header.svg';
 
 type MobileMenuProps = {
   onClose: () => void;
@@ -36,7 +36,7 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({
             className="mobile-menu__logo-link"
           >
             <img
-              src="/src/assets/logo-header.svg"
+              src={logo}
               alt="Book Store Logo"
               className="mobile-menu__logo-image"
             />
@@ -112,18 +112,6 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({
         </ul>
       </nav>
 
-      {/* <div className="mobile-menu__categories">
-        <Dropdown
-          variant="category"
-          dropdownText="Categories"
-          options={[
-            { label: 'Fantasy', value: 'fantasy' },
-            { label: 'Sci-fi', value: 'scifi' },
-            { label: 'Romance', value: 'romance' },
-          ]}
-          onSelect={() => {}}
-        />
-      </div> */}
       <div className="mobile-menu__icons">
         <NavLink
           to="/favourites"

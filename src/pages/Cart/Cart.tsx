@@ -3,9 +3,16 @@ import './Cart.scss';
 import { NavLink } from 'react-router-dom';
 import { BookStoreIcon, IconName } from '../../components/BookStoreIcon';
 import { useStore } from '../../hooks/useStore';
+import { useState, type ChangeEvent, type FormEvent } from 'react';
 
 export const Cart = () => {
-  const { cart } = useStore();
+  const { cart, clearCart } = useStore();
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [formValues, setFormValues] = useState({
+    email: '',
+    phone: '',
+    address: '',
+  });
 
   const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
 
@@ -18,6 +25,43 @@ export const Cart = () => {
         0,
       )
       .toFixed(2);
+
+  const handleOpenModal = () => {
+    if (cart.length) {
+      setIsModalOpen(true);
+    }
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+    setFormValues({
+      email: '',
+      phone: '',
+      address: '',
+    });
+  };
+
+  const handleFieldChange = (
+    event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
+    const { name, value } = event.target;
+    setFormValues((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const isFormValid = Object.values(formValues).every((value) => value.trim());
+
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    if (!isFormValid) {
+      return;
+    }
+
+    clearCart();
+    handleCloseModal();
+  };
 
   return (
     <section className="section cart">
@@ -53,11 +97,81 @@ export const Cart = () => {
             <button
               className="summary__btn"
               type="button"
+              onClick={handleOpenModal}
+              disabled={!cart.length}
             >
               Checkout
             </button>
           </div>
         </div>
+        {isModalOpen && (
+          <div className="cart-modal">
+            <div
+              className="cart-modal__overlay"
+              onClick={handleCloseModal}
+            />
+            <div
+              className="cart-modal__content"
+              role="dialog"
+              aria-modal="true"
+            >
+              <button
+                className="cart-modal__close"
+                type="button"
+                aria-label="Close checkout form"
+                onClick={handleCloseModal}
+              >
+                ×
+              </button>
+              <h4 className="cart-modal__title">Checkout details</h4>
+              <form
+                className="cart-modal__form"
+                onSubmit={handleSubmit}
+              >
+                <label className="cart-modal__field">
+                  <span>Email</span>
+                  <input
+                    name="email"
+                    type="email"
+                    value={formValues.email}
+                    onChange={handleFieldChange}
+                    required
+                    placeholder="customer@email.com"
+                  />
+                </label>
+                <label className="cart-modal__field">
+                  <span>Phone</span>
+                  <input
+                    name="phone"
+                    type="tel"
+                    value={formValues.phone}
+                    onChange={handleFieldChange}
+                    required
+                    placeholder="+380 00 000 00 00"
+                  />
+                </label>
+                <label className="cart-modal__field">
+                  <span>Address</span>
+                  <textarea
+                    name="address"
+                    value={formValues.address}
+                    onChange={handleFieldChange}
+                    required
+                    placeholder="Delivery address"
+                    rows={3}
+                  />
+                </label>
+                <button
+                  className="cart-modal__submit"
+                  type="submit"
+                  disabled={!isFormValid}
+                >
+                  Pay
+                </button>
+              </form>
+            </div>
+          </div>
+        )}
       </div>
     </section>
   );

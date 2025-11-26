@@ -1,4 +1,4 @@
-@use '/src/styles/utils/mixins' as mixins;
+@use '/src/styles/utils/mixins' as *;
 
 .categories {
   width: 100%;
@@ -11,11 +11,15 @@
   justify-content: center;
   grid-template-columns: repeat(auto-fit, minmax(288px, 288px));
 
-  @include mixins.on-tablet {
+  @media (max-width: 639px) {
+    row-gap: 24px;
+  }
+
+  @include on-tablet {
     grid-template-columns: repeat(auto-fit, minmax(187px, 187px));
   }
 
-  @include mixins.on-desktop {
+  @include on-desktop {
     grid-template-columns: repeat(auto-fit, minmax(368px, 368px));
   }
 }
@@ -51,7 +55,16 @@
   padding-bottom: 23px;
 }
 
-@include mixins.on-tablet {
+.category__content-text {
+  padding-left: 7px;
+}
+
+.category__content-title {
+  padding-top: 5px;
+  padding-left: 7px;
+}
+
+@include on-tablet {
   .categories {
     max-width: 593px;
   }
@@ -65,7 +78,7 @@
   }
 }
 
-@include mixins.on-desktop {
+@include on-desktop {
   .categories {
     max-width: 1136px;
   }
