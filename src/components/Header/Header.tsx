@@ -7,8 +7,11 @@ import { Dropdown } from '../Dropdown';
 import { MobileMenu } from './MobileMenu';
 
 import { SearchDropdown } from '../SearchDropdown';
+import { useSearchParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import { useStore } from '../../hooks/useStore';
+import { categoryOptions } from '../../utils/options';
 import type { GeneralBook } from '../../types/GeneralBook';
 import logo from '../../assets/logo-header.svg';
 
@@ -21,6 +24,7 @@ export const Header: React.FC<HeaderProps> = ({ allBooks }) => {
   const [selectedCategory, setSelectedCategory] = useState<string | number>(
     'Category',
   );
+  const [searchParams, setSearchParams] = useSearchParams();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const [openInput, setOpenInput] = useState(false);
@@ -33,6 +37,14 @@ export const Header: React.FC<HeaderProps> = ({ allBooks }) => {
 
   const { cart, favourites } = useStore();
   const totalItemsCart = cart.reduce((sum, item) => sum + item.quantity, 0);
+
+  const navigate = useNavigate();
+
+  const handleSelect = (value: string) => {
+    searchParams.set('category', value.toLowerCase());
+    setSearchParams(searchParams);
+    navigate(`books/${value.toLowerCase()}`);
+  };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setQuery(e.target.value);
@@ -138,12 +150,11 @@ export const Header: React.FC<HeaderProps> = ({ allBooks }) => {
                 //sort, number, category
                 variant="category"
                 dropdownText={selectedCategory}
-                options={[
-                  { label: 'Audio', value: 'Audio' },
-                  { label: 'Kindle', value: 'Kindle' },
-                  { label: 'Paper', value: 'Paper' },
-                ]}
-                onSelect={(val) => setSelectedCategory(val.toString())}
+                options={categoryOptions}
+                onSelect={(val) => {
+                  setSelectedCategory(val.toString());
+                  handleSelect(val.toString());
+                }}
               />
             </div>
             <div className="header__icons">
