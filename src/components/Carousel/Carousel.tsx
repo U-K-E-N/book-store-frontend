@@ -7,6 +7,7 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
 import './Carousel.scss';
+import { Link } from 'react-router-dom';
 
 export const Carousel: FC = () => {
   return (
@@ -26,21 +27,36 @@ export const Carousel: FC = () => {
         className="banner-slider"
       >
         <SwiperSlide>
-          <div className="banner-slider__banner banner-slider__banner--first">
-            <div className="banner-slider__main-content"></div>
-          </div>
+          <Link
+            to="/books/constitution-day"
+            className="banner-slider__link"
+          >
+            <div className="banner-slider__banner banner-slider__banner--first">
+              <div className="banner-slider__main-content"></div>
+            </div>
+          </Link>
         </SwiperSlide>
 
         <SwiperSlide>
-          <div className="banner-slider__banner banner-slider__banner--second">
-            <div className="banner-slider__main-content"></div>
-          </div>
+          <Link
+            to="/books/constitution-day"
+            className="banner-slider__link"
+          >
+            <div className="banner-slider__banner banner-slider__banner--second">
+              <div className="banner-slider__main-content"></div>
+            </div>
+          </Link>
         </SwiperSlide>
 
         <SwiperSlide>
-          <div className="banner-slider__banner banner-slider__banner--third">
-            <div className="banner-slider__main-content"></div>
-          </div>
+          <Link
+            to="/books/constitution-day"
+            className="banner-slider__link"
+          >
+            <div className="banner-slider__banner banner-slider__banner--third">
+              <div className="banner-slider__main-content"></div>
+            </div>
+          </Link>
         </SwiperSlide>
       </Swiper>
 
