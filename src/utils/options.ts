@@ -6,4 +6,5 @@ export const categoryOptions = [
   { label: 'Psychology', value: 'psychology' },
   { label: 'Algorithms', value: 'algorithms' },
   { label: 'Young adult', value: 'young-adult' },
+  { label: 'Constitution day', value: 'constitution-day' },
 ];

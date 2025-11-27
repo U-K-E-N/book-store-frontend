@@ -50,6 +50,7 @@ export const ItemCard = () => {
     if (sameBookOtherLang) {
       navigate(
         `/${sameBookOtherLang.type}/${sameBookOtherLang.category}/${sameBookOtherLang.slug}`,
+        { replace: true },
       );
     }
   };

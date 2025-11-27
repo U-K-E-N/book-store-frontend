@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { BookStoreIcon, IconName } from '../BookStoreIcon';
 import type { GeneralBook } from '../../types/GeneralBook';
 import './Breadcrumbs.scss';
+import { categoryOptions } from '../../utils/options';
 
 type BreadcrumbsProps = {
   book: GeneralBook;
@@ -10,6 +11,17 @@ type BreadcrumbsProps = {
 export const Breadcrumbs = ({ book }: BreadcrumbsProps) => {
   const categories = book.category || [];
   const mainCategory = categories[0] || 'Unknown';
+
+  const allowedCategories = categoryOptions.map((opt) =>
+    opt.value.toLowerCase(),
+  );
+
+  const normalizedCategory = mainCategory.toLowerCase().replace(/\s+/g, '-');
+
+  const finalCategory =
+    allowedCategories.includes(normalizedCategory) ? normalizedCategory : (
+      'fantasy'
+    );
 
   const typeMap = {
     paperback: 'Paper book',
@@ -41,7 +53,7 @@ export const Breadcrumbs = ({ book }: BreadcrumbsProps) => {
 
       <Link
         className="breadcrumbs__link breadcrumbs__link--category"
-        to={`/${book.type}/${mainCategory.toLowerCase().replace(/\s+/g, '-')}`}
+        to={`/books/${finalCategory}`}
       >
         {mainCategory}
       </Link>
