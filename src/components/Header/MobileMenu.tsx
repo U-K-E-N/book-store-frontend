@@ -2,8 +2,9 @@ import { NavLink } from 'react-router-dom';
 import { BookStoreIcon, IconName } from '../BookStoreIcon';
 import { Input } from '../Input';
 import './MobileMenu.scss';
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { useStore } from '../../hooks/useStore';
+import { useClickOutside } from '../../hooks/useClickOutside';
 import { SearchDropdown } from '../SearchDropdown';
 import type { BookBase } from '../../types/BookBase';
 import logo from '../../assets/logo-header.svg';
@@ -19,12 +20,26 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({
 }) => {
   const { cart, favourites } = useStore();
   const [query, setQuery] = useState('');
+  const searchContainerRef = useRef<HTMLDivElement | null>(null);
 
   const filteredBooks = allBooks.filter(
     (book) =>
       book.name.toLowerCase().includes(query.toLowerCase()) ||
       book.author?.toLowerCase().includes(query.toLowerCase()),
   );
+
+  const shouldShowDropdown = query.length > 2 && filteredBooks.length > 0;
+
+  useClickOutside(searchContainerRef, () => {
+    if (shouldShowDropdown) {
+      setQuery('');
+    }
+  });
+
+  const handleDropdownItemClick = () => {
+    setQuery('');
+    onClose();
+  };
 
   const totalItemsCart = cart.reduce((sum, item) => sum + item.quantity, 0);
   return (
@@ -51,7 +66,10 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({
         </div>
       </div>
 
-      <div className="mobile-menu__search">
+      <div
+        className="mobile-menu__search"
+        ref={searchContainerRef}
+      >
         <Input
           placeholder="Find a book or author"
           value={query}
@@ -67,8 +85,11 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({
           </button>
         )}
 
-        {query.length > 2 && filteredBooks.length > 0 && (
-          <SearchDropdown books={filteredBooks} />
+        {shouldShowDropdown && (
+          <SearchDropdown
+            books={filteredBooks}
+            onItemClick={handleDropdownItemClick}
+          />
         )}
       </div>
 

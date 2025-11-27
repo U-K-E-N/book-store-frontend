@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { Input } from '../Input';
 import './Header.scss';
 import { NavLink } from 'react-router-dom';
@@ -11,6 +11,7 @@ import { useSearchParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 
 import { useStore } from '../../hooks/useStore';
+import { useClickOutside } from '../../hooks/useClickOutside';
 import { categoryOptions } from '../../utils/options';
 import type { GeneralBook } from '../../types/GeneralBook';
 import logo from '../../assets/logo-header.svg';
@@ -28,12 +29,21 @@ export const Header: React.FC<HeaderProps> = ({ allBooks }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const [openInput, setOpenInput] = useState(false);
+  const searchContainerRef = useRef<HTMLDivElement | null>(null);
 
   const filteredBooks = allBooks.filter(
     (book) =>
       book.name.toLowerCase().includes(query.toLowerCase()) ||
       book.author?.toLowerCase().includes(query.toLowerCase()),
   );
+
+  const shouldShowDropdown = query.length > 2 && filteredBooks.length > 0;
+
+  useClickOutside(searchContainerRef, () => {
+    if (shouldShowDropdown) {
+      setQuery('');
+    }
+  });
 
   const { cart, favourites } = useStore();
   const totalItemsCart = cart.reduce((sum, item) => sum + item.quantity, 0);
@@ -54,6 +64,10 @@ export const Header: React.FC<HeaderProps> = ({ allBooks }) => {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setQuery(e.target.value);
+  };
+
+  const handleDropdownItemClick = () => {
+    setQuery('');
   };
 
   const handleChangeInputOpen = () => {
@@ -128,7 +142,10 @@ export const Header: React.FC<HeaderProps> = ({ allBooks }) => {
             </nav>
           </div>
           <div className="header__search">
-            <div className="header__input">
+            <div
+              className="header__input"
+              ref={searchContainerRef}
+            >
               <Input
                 isOpen={openInput}
                 value={query}
@@ -146,8 +163,11 @@ export const Header: React.FC<HeaderProps> = ({ allBooks }) => {
                 </button>
               )}
 
-              {query.length > 2 && filteredBooks.length > 0 && (
-                <SearchDropdown books={filteredBooks} />
+              {shouldShowDropdown && (
+                <SearchDropdown
+                  books={filteredBooks}
+                  onItemClick={handleDropdownItemClick}
+                />
               )}
             </div>
 

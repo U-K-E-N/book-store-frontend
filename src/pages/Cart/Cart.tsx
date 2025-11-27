@@ -3,7 +3,7 @@ import './Cart.scss';
 import { NavLink } from 'react-router-dom';
 import { BookStoreIcon, IconName } from '../../components/BookStoreIcon';
 import { useStore } from '../../hooks/useStore';
-import { useState, type ChangeEvent, type FormEvent } from 'react';
+import { useEffect, useState, type ChangeEvent, type FormEvent } from 'react';
 
 export const Cart = () => {
   const { cart, clearCart } = useStore();
@@ -40,6 +40,18 @@ export const Cart = () => {
       address: '',
     });
   };
+
+  useEffect(() => {
+    if (isModalOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isModalOpen]);
 
   const handleFieldChange = (
     event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,

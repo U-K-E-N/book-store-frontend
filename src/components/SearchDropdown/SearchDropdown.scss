@@ -4,11 +4,12 @@
   top: 100%;
   left: 0;
   width: 100%;
-  z-index: 50;
-  background: white;
+  z-index: 1000;
+  background-color: var(--color-white);
   border: 1px solid #ddd;
   border-radius: 8px;
   padding: 16px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
 }
 
 .search-dropdown-wrapper {
