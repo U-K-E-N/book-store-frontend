@@ -278,7 +278,7 @@
     "publication": "Longman (Pearson Education)",
     "format": "220x200 mm",
     "illustrations": false,
-    "category": ["Software Development", "Programming Practice", "Programming"],
+    "category": ["Constitution day", "Programming Practice", "Programming"],
     "description": [
       "Even bad code can function. But if code isn't clean, it can bring a development organization to its knees. Every year, countless hours and significant resources are lost because of poorly written code. But it doesn't have to be that way. Noted software expert Robert C. Martin, presents a revolutionary paradigm with Clean Code: A Handbook of Agile Software Craftsmanship. Martin, who has helped bring agile principles from a practitioner's point of view to tens of thousands of programmers, has teamed up with his colleagues from Object Mentor to distill their best agile practice of cleaning code 'on the fly' into a book that will instill within you the values of software craftsman, and make you a better programmer--but only if you work at it. What kind of work will you be doing? You'll be reading code--lots of code. And you will be challenged to think about what's right about that code, and what's wrong with it. More importantly you will be challenged to reassess your professional values and your commitment to your craft. Clean Code is divided into three parts. The first describes the principles, patterns, and practices of writing clean code. The second part consists of several case studies of increasing complexity. Each case study is an exercise in cleaning up code--of transforming a code base that has some problems into one that is sound and efficient. The third part is the payoff: a single chapter containing a list of heuristics and 'smells' gathered while creating the case studies. The result is a knowledge base that describes the way we think when we write, read, and clean code. Readers will come away from this book understanding *How to tell the difference between good and bad code *How to write good code and how to transform bad code into good code *How to create good names, good functions, good objects, and good classes *How to format code for maximum readability *How to implement complete error handling without obscuring code logic *How to unit test and practice test-driven development *What 'smells' and heuristics can help you identify bad codeThis book is a must for any developer, software engineer, project manager, team lead, or systems analyst with an interest in producing better code.",
       "Even bad code can function. But if code isn’t clean, it can bring a development organization to its knees. Every year, countless hours and significant resources are lost because of poorly written code. But it doesn’t have to be that way.",
@@ -313,7 +313,7 @@
     "publication": "Фабула",
     "format": "220x200 mm",
     "illustrations": false,
-    "category": ["Software Development", "Programming Practice", "Programming"],
+    "category": ["Constitution day", "Programming Practice", "Programming"],
     "description": [
       "Навіть поганий програмний код може працювати. Однак якщо код не є «чистим», це завжди буде заважати розвитку проекту і компанії-розробника, віднімаючи значні ресурси на його підтримку і «приборкання». Ця книга присвячена хорошому програмуванню. У ній повно реальних прикладів коду. Прочитавши книгу, ви дізнаєтеся багато нового про коди. Більш того, ви навчитеся відрізняти хороший код від поганого. Ви дізнаєтеся, як писати хороший код і як перетворити поганий код у хороший."
     ]
@@ -337,7 +337,7 @@
     "format": "154x231 mm",
     "illustrations": true,
     "category": [
-      "Project Management",
+      "Constitution day",
       "Project Execution and Control",
       "Business Literature: Leaders' Recommendations",
       "Programming"
@@ -373,7 +373,7 @@
     "format": "165x235 mm",
     "illustrations": true,
     "category": [
-      "Project Management",
+      "Constitution day",
       "Project Execution and Control",
       "Business Literature: Leaders' Recommendations",
       "Programming"
@@ -466,7 +466,7 @@
     "publication": "Pearson",
     "format": "174x22 6mm",
     "illustrations": true,
-    "category": ["Computer games", "Programming"],
+    "category": ["Constitution day", "Programming"],
     "description": [
       "As games grow more complex and gamers' expectations soar, the discipline of game systems design becomes ever more important. Game systems designers plan a game's rules and balance, its characters' attributes, most of its data, and how its AI, weapons, and objects work and interact.",
       "Introduction to Game Systems Design is the first complete beginner's guide to this crucial discipline. Writing for all aspiring game professionals, even those with absolutely no experience, leading game designer and instructor Dax Gazaway presents a step-by-step, hands-on approach to designing game systems with industry-standard tools.",
@@ -497,7 +497,7 @@
     "publication": "Фабула",
     "format": "170х240х25 mm",
     "illustrations": true,
-    "category": ["Computer games", "Programming"],
+    "category": ["Constitution day", "Programming"],
     "description": [
       "Комп’ютерні ігри стають дедалі складнішими, очікування геймерів зростають, тому дизайн ігрових систем стає дедалі важливішим. Розробники ігрових систем створюють правила та баланс гри, атрибути її персонажів, більшу частину даних, а також принципи функціонування та роботи ШІ, зброї та об’єктів",
       "«Вступ до дизайну ігрових систем» — перше повне керівництво для початківців вивчення цієї важливої дисципліни, створене провідним геймдизайнером і коучем Даксом Ґазавеєм. Ця книжка адресована всім, хто робить перші кроки у цій професії, у тому числі й тим, хто не має жодного досвіду. Незалежно від того, чи ви є студентом-першокурсником, інді-розробником, який використовує Unreal чи Unity, або просто геймером, який намагається по-справжньому розібратися в сучасних іграх, Дакс допоможе вам дізнатися саме те, що вам необхідно."
@@ -525,7 +525,7 @@
     "format": "180x240 mm",
     "illustrations": true,
     "category": [
-      "Pyton",
+      "Constitution day",
       "Software Design, Testing & Engineering",
       "Programming"
     ],
@@ -559,7 +559,7 @@
     "format": "205х240 mm",
     "illustrations": true,
     "category": [
-      "Pyton",
+      "Constitution day",
       "Software Design, Testing & Engineering",
       "Programming"
     ],
@@ -586,7 +586,7 @@
     "format": "145x215 mm",
     "illustrations": true,
     "category": [
-      "Company Stories",
+      "Constitution day",
       "Motivation. Self-Improvement",
       "E-Commerce",
       "Psychology",
@@ -632,7 +632,7 @@
     "format": "150x220 mm",
     "illustrations": true,
     "category": [
-      "Company Stories",
+      "Constitution day",
       "Motivation. Self-Improvement",
       "E-Commerce",
       "Psychology",
@@ -668,7 +668,7 @@
     "format": "160x240 mm",
     "illustrations": false,
     "category": [
-      "Success Stories",
+      "Constitution day",
       "Company Stories",
       "Psychology",
       "Books about Innovation",
@@ -708,7 +708,7 @@
     "format": "150х205 mm",
     "illustrations": false,
     "category": [
-      "Success Stories",
+      "Constitution day",
       "Company Stories",
       "Psychology",
       "Books about Innovation",
@@ -741,7 +741,7 @@
     "format": "130x200 mm",
     "illustrations": true,
     "category": [
-      "Securities. Investments. Appraisal",
+      "Constitution day",
       "BookChef: bestsellers",
       "All about business and money",
       "Psychology"
@@ -776,7 +776,7 @@
     "format": "162х210 mm",
     "illustrations": true,
     "category": [
-      "Securities. Investments. Appraisal",
+      "Constitution day",
       "BookChef: bestsellers",
       "All about business and money",
       "Psychology"
@@ -806,7 +806,7 @@
     "format": "111х178 mm",
     "illustrations": false,
     "category": [
-      "Personality Psychology",
+      "Constitution day",
       "Psychology. General Works",
       "Mental Processes",
       "Personal Transformations",
@@ -847,7 +847,7 @@
     "format": "150х205 mm",
     "illustrations": false,
     "category": [
-      "Personality Psychology",
+      "Constitution day",
       "Psychology. General Works",
       "Mental Processes",
       "Personal Transformations",
@@ -879,7 +879,7 @@
     "format": "153х234 mm",
     "illustrations": false,
     "category": [
-      "Women in Business",
+      "Constitution day",
       "English",
       "Gender Studies. Feminism",
       "Psychology"
@@ -917,7 +917,7 @@
     "format": "140х215 mm",
     "illustrations": false,
     "category": [
-      "Women in Business",
+      "Constitution day",
       "English",
       "Gender Studies. Feminism",
       "Psychology"
@@ -945,7 +945,11 @@
     "publication": "Free Press",
     "format": "1.7 MB",
     "illustrations": false,
-    "category": ["Leadership", "All about business and money", "Psychology"],
+    "category": [
+      "Constitution day",
+      "All about business and money",
+      "Psychology"
+    ],
     "description": [
       "For more than fifteen years, Robin Sharma has been quietly sharing with Fortune 500 companies and many of the super-rich a success formula that has made him one of the most sought-after leadership advisers in the world. Now, for the first time, Sharma makes his proprietary process available to you, so that you can get to your absolute best while helping your organization break through to a dramatically new level of winning in these wildly uncertain times.",
       "Regardless of what you do within your organization and the current circumstances of your life, the single most important fact is that you have the power to show leadership. Wherever you are in your career or life, you should always play to your peak abilities. This book shows you how to claim that staggering power, as well as transform your life—and the world around you—in the process."
@@ -975,7 +979,11 @@
     "publication": "КМ-БУКС",
     "format": "1.7 MB",
     "illustrations": false,
-    "category": ["Leadership", "All about business and money", "Psychology"],
+    "category": [
+      "Constitution day",
+      "All about business and money",
+      "Psychology"
+    ],
     "description": [
       "«Для того щоб бути лідером, титул не потрібен», — стверджує Робін Шарма, знаний і шанований у бізнесових колах консультант з питань особистісного розвитку. Він руйнує міфи про застарілі методи лідерства, а натомість вчить, як найповніше реалізувати свій лідерський потенціал та амбіційні плани і як, скориставшись поданими у книзі порадами, методиками і техніками, змінити на краще своє життя та навколишній світ.",
       "Більшість людей вважає, що їхня доля — прожити посереднє життя і що вони ніколи нічого не досягнуть. Але доля — це всього лише результат вибору. І ця книга допоможе своєму читачу зробити цей вибір, та змінити своє життя на краще, варто лише виконувати рекомендації Робіна Шарми! Ризикніть і ви станете зовсім іншою людиною!"
@@ -1002,7 +1010,7 @@
     "format": "130х200 mm",
     "illustrations": true,
     "category": [
-      "General Management",
+      "Constitution day",
       "Project Management",
       "Business Ownership and Organization",
       "Psychology"
@@ -1039,7 +1047,7 @@
     "format": "150х220 mm",
     "illustrations": true,
     "category": [
-      "General Management",
+      "Constitution day",
       "Project Management",
       "Business Ownership and Organization",
       "Psychology"
@@ -1070,7 +1078,7 @@
     "format": "34.4 MB",
     "illustrations": false,
     "category": [
-      "Stock Market",
+      "Constitution day",
       "Our Format: New Releases and Hits",
       "All About Business and Money",
       "Psychology"
@@ -1108,7 +1116,7 @@
     "format": "34.4 MB",
     "illustrations": false,
     "category": [
-      "Stock Market",
+      "Constitution day",
       "Our Format: New Releases and Hits",
       "All About Business and Money",
       "Psychology"
@@ -1139,7 +1147,7 @@
     "format": "130x198x28 mm",
     "illustrations": false,
     "category": [
-      "Foreign Economic Activity and International Relations",
+      "Constitution day",
       "World History",
       "International Business",
       "General and World History",
@@ -1176,7 +1184,7 @@
     "format": "130x198x28 mm",
     "illustrations": false,
     "category": [
-      "Foreign Economic Activity and International Relations",
+      "Constitution day",
       "World History",
       "International Business",
       "General and World History",
@@ -1209,7 +1217,7 @@
     "format": "140x210 mm",
     "illustrations": false,
     "category": [
-      "Financial analysis, assessment, accounting and planning. Budget",
+      "Constitution day",
       "Motivation",
       "Personal budget",
       "Skills. Abilities",
@@ -1248,7 +1256,7 @@
     "format": "140x210 mm",
     "illustrations": false,
     "category": [
-      "Financial analysis, assessment, accounting and planning. Budget",
+      "Constitution day",
       "Motivation",
       "Personal budget",
       "Skills. Abilities",
@@ -1277,7 +1285,7 @@
     "format": "150x220 mm",
     "illustrations": false,
     "category": [
-      "Motivation. Self-improvement",
+      "Constitution day",
       "Business planning",
       "Leadership",
       "Managerial management. Decision management",
@@ -1314,7 +1322,7 @@
     "format": "145x215 mm",
     "illustrations": false,
     "category": [
-      "Motivation. Self-improvement",
+      "Constitution day",
       "Business planning",
       "Leadership",
       "Managerial management. Decision management",
@@ -1351,7 +1359,7 @@
     "format": "130x210 mm",
     "illustrations": false,
     "category": [
-      "Science fiction",
+      "Constitution day",
       "Dystopia",
       "Teen dystopian books",
       "Dystopian genre books",
@@ -1425,7 +1433,7 @@
     "format": "130x210 mm",
     "illustrations": true,
     "category": [
-      "Teen dystopian books",
+      "Constitution day",
       "Drama",
       "Our product manager's favorite",
       "Dramione",
@@ -1464,7 +1472,7 @@
     "format": "129x198 mm",
     "illustrations": false,
     "category": [
-      "Classic prose",
+      "Constitution day",
       "Dystopia",
       "Classic fiction",
       "Utopian and dystopian science fiction"
@@ -1502,7 +1510,7 @@
     "format": "135x205 mm",
     "illustrations": false,
     "category": [
-      "Psychological thriller",
+      "Constitution day",
       "Classic prose",
       "Detective",
       "Our Tech&Team lead's favorite"
@@ -1537,7 +1545,7 @@
     "format": "129x198 mm",
     "illustrations": false,
     "category": [
-      "Psychological thriller",
+      "Constitution day",
       "Detective",
       "Movie tie-in & adaptations",
       "Classic prose",
