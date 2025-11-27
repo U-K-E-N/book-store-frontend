@@ -60,13 +60,21 @@
   inset: 0;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   z-index: 1000;
+  overflow-y: auto;
+  padding: 16px;
+
+  @include on-desktop {
+    padding: 0;
+    align-items: center;
+  }
 
   &__overlay {
-    position: absolute;
+    position: fixed;
     inset: 0;
     background-color: rgba(0, 0, 0, 0.4);
+    z-index: -1;
   }
 
   &__content {
@@ -75,8 +83,15 @@
     border-radius: 16px;
     padding: 32px 24px;
     width: min(90vw, 420px);
+    max-height: calc(100vh - 32px);
     box-shadow: 0 12px 32px rgba(15, 23, 42, 0.15);
     z-index: 1;
+    margin: auto;
+    overflow-y: auto;
+
+    @include on-desktop {
+      max-height: 90vh;
+    }
   }
 
   &__close {

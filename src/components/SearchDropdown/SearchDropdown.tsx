@@ -6,9 +6,13 @@ import { normalizeCategory } from '../../utils/normalizeCategory';
 
 interface SearchDropdownProps {
   books: BookBase[];
+  onItemClick?: () => void;
 }
 
-export const SearchDropdown: React.FC<SearchDropdownProps> = ({ books }) => {
+export const SearchDropdown: React.FC<SearchDropdownProps> = ({
+  books,
+  onItemClick,
+}) => {
   return (
     <div className="search-dropdown">
       <div className="search-dropdown-wrapper">
@@ -23,6 +27,7 @@ export const SearchDropdown: React.FC<SearchDropdownProps> = ({ books }) => {
               <Link
                 to={`/${book.type}/${normalizeCategory(book.category[0])}/${book.slug}`}
                 className="search-dropdown__link"
+                onClick={onItemClick}
               >
                 <img
                   className="search-dropdown__image"
